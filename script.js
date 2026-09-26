@@ -1,143 +1,153 @@
-const hero = document.querySelector(".hero");
-const glow = document.querySelector(".hero-glow");
-const cursor = document.querySelector(".custom-cursor");
-const canvas = document.getElementById("hero-canvas");
-const ctx = canvas.getContext("2d");
 
-let mouse = { x: window.innerWidth * 0.72, y: window.innerHeight * 0.35 };
-let heroMouse = { x: 0, y: 0, inside: false };
-let nodes = [];
-let dpr = Math.min(window.devicePixelRatio || 1, 2);
+const paths=[...document.querySelectorAll(".trace-line")];
+const callouts=[...document.querySelectorAll(".callout")];
+const point=document.querySelector(".white-plot-point");
+const title=document.querySelector(".drawing-title");
+const svg=document.querySelector(".engine-svg");
 
-function resizeCanvas() {
-  const rect = hero.getBoundingClientRect();
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
-  canvas.style.width = rect.width + "px";
-  canvas.style.height = rect.height + "px";
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+const DRAW_MS=32000;
+let pathInfo=[], totalWeight=0, startTime=null, completed=false;
 
-  const count = Math.max(28, Math.min(60, Math.floor(rect.width / 24)));
-  nodes = Array.from({ length: count }, () => ({
-    x: Math.random() * rect.width,
-    y: Math.random() * rect.height,
-    r: Math.random() * 1.5 + 0.5,
-    vx: (Math.random() - 0.5) * 0.12,
-    vy: (Math.random() - 0.5) * 0.12
-  }));
+function prepare(){
+  paths.forEach(p=>{
+    const len=p.getTotalLength();
+    // Use actual geometry length for time allocation.
+    const weight=Math.max(18,len);
+    pathInfo.push({len,weight});
+    totalWeight+=weight;
+    p.style.strokeDasharray=len;
+    p.style.strokeDashoffset=len;
+  });
+
+  callouts.forEach(g=>{
+    const line=g.querySelector(".callout-line");
+    const len=line.getTotalLength();
+    line.dataset.len=len;
+    line.style.strokeDasharray=len;
+    line.style.strokeDashoffset=len;
+    g.querySelector(".callout-node").style.opacity="0";
+  });
 }
 
-function drawNetwork() {
-  const w = canvas.clientWidth;
-  const h = canvas.clientHeight;
-  ctx.clearRect(0, 0, w, h);
-
-  nodes.forEach(n => {
-    n.x += n.vx;
-    n.y += n.vy;
-    if (n.x < 0 || n.x > w) n.vx *= -1;
-    if (n.y < 0 || n.y > h) n.vy *= -1;
-
-    if (heroMouse.inside) {
-      const dx = n.x - heroMouse.x;
-      const dy = n.y - heroMouse.y;
-      const dist = Math.hypot(dx, dy);
-      if (dist < 150 && dist > 0) {
-        const force = (150 - dist) / 150;
-        n.x += (dx / dist) * force * 0.45;
-        n.y += (dy / dist) * force * 0.45;
-      }
-    }
-  });
-
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
-      const a = nodes[i], b = nodes[j];
-      const dist = Math.hypot(a.x - b.x, a.y - b.y);
-      if (dist < 115) {
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = `rgba(255,157,0,${(1 - dist / 115) * 0.12})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-    }
-  }
-
-  nodes.forEach(n => {
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255,157,0,.34)";
-    ctx.fill();
-  });
-
-  if (heroMouse.inside) {
-    ctx.beginPath();
-    ctx.arc(heroMouse.x, heroMouse.y, 44, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(255,157,0,.16)";
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(heroMouse.x - 62, heroMouse.y);
-    ctx.lineTo(heroMouse.x + 62, heroMouse.y);
-    ctx.moveTo(heroMouse.x, heroMouse.y - 62);
-    ctx.lineTo(heroMouse.x, heroMouse.y + 62);
-    ctx.strokeStyle = "rgba(255,157,0,.08)";
-    ctx.stroke();
-  }
-
-  requestAnimationFrame(drawNetwork);
+function ease(t){
+  return t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
 }
 
-window.addEventListener("mousemove", e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
+function typeText(el,text,ms){
+  el.textContent="";
+  let i=0;
+  const chars=[...text];
+  const dt=Math.max(16,ms/Math.max(1,chars.length));
+  const timer=setInterval(()=>{
+    el.textContent+=chars[i++]||"";
+    if(i>=chars.length) clearInterval(timer);
+  },dt);
+}
 
-  cursor.style.left = `${e.clientX}px`;
-  cursor.style.top = `${e.clientY}px`;
-  cursor.style.opacity = "1";
+function draw(ts){
+  if(!startTime) startTime=ts;
+  const p=Math.min(1,(ts-startTime)/DRAW_MS);
+  const target=ease(p)*totalWeight;
 
-  const rect = hero.getBoundingClientRect();
-  const inside = e.clientY >= rect.top && e.clientY <= rect.bottom;
+  let acc=0, active=-1, local=0;
 
-  if (inside) {
-    heroMouse.x = e.clientX - rect.left;
-    heroMouse.y = e.clientY - rect.top;
-    heroMouse.inside = true;
+  for(let i=0;i<paths.length;i++){
+    const w=pathInfo[i].weight;
+    const next=acc+w;
 
-    hero.style.setProperty("--mx", `${heroMouse.x}px`);
-    hero.style.setProperty("--my", `${heroMouse.y}px`);
-  } else {
-    heroMouse.inside = false;
+    if(target>=next){
+      paths[i].style.strokeDashoffset=0;
+    }else if(target>acc && active<0){
+      active=i;
+      local=(target-acc)/w;
+      paths[i].style.strokeDashoffset=pathInfo[i].len*(1-local);
+    }else if(active<0){
+      paths[i].style.strokeDashoffset=pathInfo[i].len;
+    }
+    acc=next;
   }
-});
 
-window.addEventListener("mouseout", () => {
-  cursor.style.opacity = "0";
-  heroMouse.inside = false;
-});
+  if(active>=0){
+    const path=paths[active];
+    const pt=path.getPointAtLength(pathInfo[active].len*local);
+    point.setAttribute("transform",`translate(${pt.x} ${pt.y})`);
+    point.style.opacity=".82";
+  }
 
-document.querySelectorAll("a, button").forEach(el => {
-  el.addEventListener("mouseenter", () => {
-    cursor.style.width = "28px";
-    cursor.style.height = "28px";
+  if(p<1){
+    requestAnimationFrame(draw);
+  }else{
+    point.style.opacity="0";
+    startAnnotations();
+  }
+}
+
+function drawCallout(group,duration=650){
+  return new Promise(resolve=>{
+    const line=group.querySelector(".callout-line");
+    const node=group.querySelector(".callout-node");
+    const titleEl=group.querySelector(".callout-title");
+    const bodyEl=group.querySelector(".callout-body");
+    const len=Number(line.dataset.len);
+    const t0=performance.now();
+
+    function frame(t){
+      const p=Math.min(1,(t-t0)/duration);
+      line.style.strokeDashoffset=len*(1-p);
+      if(p<1){
+        requestAnimationFrame(frame);
+      }else{
+        node.style.opacity="1";
+        typeText(titleEl,titleEl.dataset.text,520);
+        setTimeout(()=>typeText(bodyEl,bodyEl.dataset.text,440),300);
+        setTimeout(resolve,900);
+      }
+    }
+    requestAnimationFrame(frame);
   });
-  el.addEventListener("mouseleave", () => {
-    cursor.style.width = "12px";
-    cursor.style.height = "12px";
-  });
+}
+
+async function startAnnotations(){
+  // Nothing from the source blueprint appears before this phase.
+  for(const g of callouts){
+    await drawCallout(g,620);
+  }
+  title.style.transition="opacity 1.1s ease";
+  title.style.opacity="1";
+  completed=true;
+}
+
+function nearestPath(clientX,clientY){
+  const ctm=svg.getScreenCTM();
+  if(!ctm) return null;
+  const pt=svg.createSVGPoint();
+  pt.x=clientX; pt.y=clientY;
+  const local=pt.matrixTransform(ctm.inverse());
+
+  let best=null, bestD=Infinity;
+  for(const p of paths){
+    const len=p.getTotalLength();
+    const samples=Math.max(10,Math.min(40,Math.ceil(len/38)));
+    for(let i=0;i<=samples;i++){
+      const q=p.getPointAtLength(len*i/samples);
+      const d=Math.hypot(q.x-local.x,q.y-local.y);
+      if(d<bestD){bestD=d;best=p;}
+    }
+  }
+  return bestD<48 ? best : null;
+}
+
+svg.addEventListener("mousemove",e=>{
+  if(!completed) return;
+  paths.forEach(p=>p.classList.remove("hovered"));
+  const p=nearestPath(e.clientX,e.clientY);
+  if(p) p.classList.add("hovered");
+});
+svg.addEventListener("mouseleave",()=>{
+  paths.forEach(p=>p.classList.remove("hovered"));
 });
 
-document.querySelectorAll("[data-placeholder-link]").forEach(el => {
-  el.addEventListener("click", e => {
-    e.preventDefault();
-  });
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
-resizeCanvas();
-drawNetwork();
-window.addEventListener("resize", resizeCanvas);
+prepare();
+requestAnimationFrame(draw);
+document.querySelectorAll(".placeholder").forEach(a=>a.addEventListener("click",e=>e.preventDefault()));
+document.getElementById("year").textContent=new Date().getFullYear();
