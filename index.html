@@ -1,40 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Leo Taheri — Mechatronics Engineer focused on product development, CAD, prototyping, manufacturing, and embedded systems." />
   <title>Leo Taheri | Mechatronics Engineer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <div class="page-noise"></div>
 
-  <h1>Leo Taheri</h1>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Leo Taheri home">
+      <span class="brand-mark">LT</span>
+      <span class="brand-name">LEO TAHERI</span>
+    </a>
 
-  <h2>Mechatronics Engineer</h2>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-  <p>
-    Product Development | CAD Design | Prototyping | Manufacturing
-  </p>
+    <a class="header-cta" href="#contact">Let’s talk <span>↗</span></a>
+  </header>
 
-  <hr>
+  <main>
+    <section class="hero" id="top">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
 
-  <h2>About Me</h2>
+      <div class="hero-content">
+        <div class="eyebrow reveal">MECHATRONICS · PRODUCT DEVELOPMENT · R&D</div>
 
-  <p>
-    Mechatronics Engineer with experience in mechanical design,
-    product development, prototyping, 3D printing, CNC manufacturing,
-    electronics, and embedded systems.
-  </p>
+        <h1 class="reveal delay-1">
+          I design products<br />
+          <span>that move, work,</span><br />
+          and get built.
+        </h1>
 
-  <h2>Projects</h2>
+        <p class="hero-copy reveal delay-2">
+          Mechanical design, CAD, rapid prototyping, manufacturing,
+          electronics and embedded systems — combined into practical engineering solutions.
+        </p>
 
-  <p>Projects will be added soon.</p>
+        <div class="hero-actions reveal delay-3">
+          <a class="btn btn-primary" href="#projects">View selected work <span>↓</span></a>
+          <a class="btn btn-secondary" href="#" data-placeholder-link>Download CV <span>↗</span></a>
+        </div>
 
-  <h2>Contact</h2>
+        <div class="hero-meta reveal delay-4">
+          <div>
+            <span class="meta-label">FOCUS</span>
+            <span>Product Development</span>
+          </div>
+          <div>
+            <span class="meta-label">TOOLS</span>
+            <span>SolidWorks · 3D Printing · CNC</span>
+          </div>
+          <div>
+            <span class="meta-label">BASED IN</span>
+            <span>Germany</span>
+          </div>
+        </div>
+      </div>
 
-  <p>
-    LinkedIn | Email | GitHub
-  </p>
+      <div class="hero-index" aria-hidden="true">
+        <span>01</span>
+        <div class="index-line"></div>
+        <span>PORTFOLIO / 2026</span>
+      </div>
 
+      <div class="mouse-hint" aria-hidden="true">
+        <span class="mouse-dot"></span>
+        MOVE CURSOR
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">SELECTED WORK</span>
+          <h2>Engineering projects</h2>
+        </div>
+        <p>
+          A selection of systems, prototypes and products developed from concept through
+          design, fabrication and testing.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card project-featured">
+          <div class="project-visual visual-a">
+            <div class="cad-shape cad-a"></div>
+            <div class="visual-label">PROJECT 01</div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Mechanical Design</span>
+              <span>SolidWorks</span>
+              <span>Prototyping</span>
+            </div>
+            <h3>Automated Laboratory System</h3>
+            <p>
+              Concept development, mechanical architecture and prototype implementation
+              for an automated technical system.
+            </p>
+            <a href="#" data-placeholder-link>View case study <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-visual visual-b">
+            <div class="cad-shape cad-b"></div>
+            <div class="visual-label">PROJECT 02</div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Motion</span>
+              <span>Electronics</span>
+              <span>Manufacturing</span>
+            </div>
+            <h3>Custom Mechatronic Platform</h3>
+            <p>
+              Integrated mechanical, electronic and motion-control development with a
+              focus on manufacturability and serviceability.
+            </p>
+            <a href="#" data-placeholder-link>View case study <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-visual visual-c">
+            <div class="cad-shape cad-c"></div>
+            <div class="visual-label">PROJECT 03</div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Rapid Prototyping</span>
+              <span>3D Printing</span>
+              <span>Testing</span>
+            </div>
+            <h3>Prototype Development</h3>
+            <p>
+              Fast iteration from CAD to physical prototype, including fixture design,
+              fabrication, assembly and functional evaluation.
+            </p>
+            <a href="#" data-placeholder-link>View case study <span>↗</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="about-number">02</div>
+      <div class="about-copy">
+        <span class="section-kicker">ABOUT</span>
+        <h2>
+          Engineering across the boundary between
+          <em>digital design</em> and <em>physical hardware.</em>
+        </h2>
+      </div>
+      <div class="about-detail">
+        <p>
+          I am a mechatronics engineer focused on product development and practical R&D.
+          My work combines CAD, mechanism design, prototyping, manufacturing and
+          electronics to turn early-stage concepts into testable hardware.
+        </p>
+        <p>
+          I enjoy projects where mechanical, electrical and manufacturing decisions
+          influence each other — and where good engineering means balancing performance,
+          simplicity and buildability.
+        </p>
+      </div>
+    </section>
+
+    <section class="section capabilities" id="capabilities">
+      <div class="section-heading compact">
+        <div>
+          <span class="section-kicker">CAPABILITIES</span>
+          <h2>What I work with</h2>
+        </div>
+      </div>
+
+      <div class="capability-list">
+        <div class="capability-row">
+          <span class="cap-index">01</span>
+          <h3>Mechanical Design & CAD</h3>
+          <p>SolidWorks · assemblies · mechanisms · technical drawings · DFM</p>
+          <span class="cap-arrow">↗</span>
+        </div>
+        <div class="capability-row">
+          <span class="cap-index">02</span>
+          <h3>Rapid Prototyping</h3>
+          <p>3D printing · fixtures · iteration · assembly · validation</p>
+          <span class="cap-arrow">↗</span>
+        </div>
+        <div class="capability-row">
+          <span class="cap-index">03</span>
+          <h3>Manufacturing</h3>
+          <p>CNC · fabrication · cutting · bending · production-oriented design</p>
+          <span class="cap-arrow">↗</span>
+        </div>
+        <div class="capability-row">
+          <span class="cap-index">04</span>
+          <h3>Electronics & Embedded</h3>
+          <p>Prototyping · PCB concepts · sensors · actuators · microcontrollers</p>
+          <span class="cap-arrow">↗</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-grid" aria-hidden="true"></div>
+      <span class="section-kicker">CONTACT</span>
+      <h2>Have an engineering challenge?</h2>
+      <p>Let’s build something that works.</p>
+
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:your-email@example.com">your-email@example.com <span>↗</span></a>
+        <a class="btn btn-secondary" href="#" data-placeholder-link>LinkedIn <span>↗</span></a>
+      </div>
+
+      <footer>
+        <span>© <span id="year"></span> Leo Taheri</span>
+        <span>Designed for engineering, not decoration.</span>
+        <a href="#top">Back to top ↑</a>
+      </footer>
+    </section>
+  </main>
+
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <script src="script.js"></script>
 </body>
 </html>
