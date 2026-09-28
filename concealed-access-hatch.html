@@ -217,6 +217,47 @@ figcaption{
       background:#f3f4f6;
     }
 
+
+    /* Project 03 expanded media gallery */
+    .gallery.project03-gallery{
+      display:grid!important;
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+      gap:20px!important;
+      max-width:920px!important;
+      margin:26px auto 0!important;
+    }
+    .gallery.project03-gallery figure{
+      margin:0!important;
+    }
+    .gallery.project03-gallery figure.wide{
+      grid-column:1/-1!important;
+    }
+    .gallery.project03-gallery .media-frame{
+      border:1px solid var(--line)!important;
+      background:#f1f2f4!important;
+      overflow:hidden!important;
+    }
+    .gallery.project03-gallery img{
+      width:100%!important;
+      height:auto!important;
+      max-height:540px!important;
+      display:block!important;
+      object-fit:contain!important;
+      background:#f1f2f4!important;
+    }
+    .gallery.project03-gallery figure.wide img{
+      max-height:640px!important;
+    }
+    @media(max-width:820px){
+      .gallery.project03-gallery{
+        grid-template-columns:1fr!important;
+        max-width:620px!important;
+      }
+      .gallery.project03-gallery figure.wide{
+        grid-column:auto!important;
+      }
+    }
+
 </style>
 </head>
 
@@ -418,18 +459,64 @@ figcaption{
     <article class="block">
       <div class="block-label">06 · PROJECT MEDIA</div>
       <div>
-        <h2>Mechanism and structural CAD development.</h2>
+        <h2>Mechanism details, complete assembly and installation context.</h2>
 
-        <div class="gallery single">
+        <div class="gallery project03-gallery">
+
           <figure class="wide">
             <div class="media-frame">
-              <img src="images/concealed-access-hatch-cad.jpg" alt="SolidWorks assembly showing the structural frame and concealed access hatch mechanism">
+              <img src="images/access-hatch-full-mechanism.png" alt="Complete CAD assembly of motorized concealed ceiling access hatch">
             </div>
             <figcaption>
-              CAD ASSEMBLY — Structural frame and actuation architecture for the concealed ceiling access hatch.
-              Additional project imagery can be added to this case study later.
+              COMPLETE MECHANISM — Full access-hatch frame showing the distributed drive system, cable routing, support structure and synchronized opening hardware.
             </figcaption>
           </figure>
+
+          <figure>
+            <div class="media-frame">
+              <img src="images/access-hatch-drive-detail-a.png" alt="Detailed CAD view of motor, spool and lead-screw mechanism">
+            </div>
+            <figcaption>
+              DRIVE DETAIL — Close-up of the motorized actuation package, including the drive motor, cable spool and screw-based adjustment components.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <div class="media-frame">
+              <img src="images/access-hatch-drive-detail-b.png" alt="Alternative detailed CAD view of access hatch drive mechanism">
+            </div>
+            <figcaption>
+              ACTUATION PACKAGE — Alternative view of the compact drive architecture developed to fit above the finished ceiling while controlling the hatch motion.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <div class="media-frame">
+              <img src="images/access-hatch-hinge-detail.png" alt="CAD detail of custom drop-and-rotate hinge mechanism">
+            </div>
+            <figcaption>
+              CUSTOM HINGE — Drop-and-rotate linkage developed so the thick finished panel first moves away from the ceiling and then rotates without edge collision.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <div class="media-frame">
+              <img src="images/access-hatch-site-ceiling.jpg" alt="Building ceiling structure and fan-coil services requiring concealed maintenance access">
+            </div>
+            <figcaption>
+              INSTALLATION CONTEXT — Typical ceiling-services zone with fan-coil equipment and building utilities above the suspended ceiling; this is the type of location where the concealed access hatch was required.
+            </figcaption>
+          </figure>
+
+          <figure class="wide">
+            <div class="media-frame">
+              <img src="images/concealed-access-hatch-cad.jpg" alt="Original SolidWorks CAD model of concealed access hatch structure">
+            </div>
+            <figcaption>
+              STRUCTURAL CAD — Overall frame architecture used to adapt the same mechanism to different access-opening dimensions.
+            </figcaption>
+          </figure>
+
         </div>
       </div>
     </article>
