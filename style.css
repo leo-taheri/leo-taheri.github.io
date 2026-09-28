@@ -533,3 +533,2285 @@ footer{position:absolute;left:max(22px,calc((100vw - var(--max))/2));right:max(2
   display: flex;
   gap: 12px;
 }
+
+
+/* =========================================================
+   PORTFOLIO REFINEMENT — authoritative final layer
+   ========================================================= */
+:root{
+  --accent:#ff9d00;
+  --accent-soft:#ffb33d;
+  --paper:#f1efe9;
+  --subtle:#92918b;
+}
+
+body{
+  font-family:"Manrope",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+.engineering-annotations,
+.drawing-title{
+  font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+/* Header — simple, centered, no duplicate branding */
+.site-header{
+  justify-content:center !important;
+  height:78px !important;
+}
+.site-header nav{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:38px !important;
+}
+.site-header nav a{
+  position:relative !important;
+  padding:29px 0 24px !important;
+  color:#aaa9a3 !important;
+  font-size:13px !important;
+  font-weight:500 !important;
+  letter-spacing:-.01em !important;
+  transition:color .22s ease,transform .22s ease !important;
+}
+.site-header nav a::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  bottom:17px !important;
+  width:0 !important;
+  height:1px !important;
+  background:var(--accent) !important;
+  transform:translateX(-50%) !important;
+  box-shadow:0 0 8px rgba(255,157,0,.18) !important;
+  transition:width .22s ease !important;
+}
+.site-header nav a:hover,
+.site-header nav a.active{
+  color:#f0eee8 !important;
+}
+.site-header nav a:hover::after{width:24px !important}
+.site-header nav a.active::after{width:38px !important}
+
+/* Hero polish: 1–6 only; engine/background remain untouched */
+.hero-content{
+  width:min(650px,100%) !important;
+}
+.hero-label{
+  display:flex !important;
+  align-items:center !important;
+  gap:18px !important;
+  margin-bottom:26px !important;
+  color:#aaa9a3 !important;
+  font-size:10px !important;
+  font-weight:600 !important;
+  letter-spacing:.23em !important;
+  text-transform:uppercase !important;
+  animation:heroLabelIn .7s ease both !important;
+}
+.hero-label::after{
+  content:"" !important;
+  width:48px !important;
+  height:1px !important;
+  background:linear-gradient(90deg,var(--accent),rgba(255,157,0,0)) !important;
+  box-shadow:0 0 8px rgba(255,157,0,.28) !important;
+}
+.hero-content h1{
+  margin:0 0 14px !important;
+  font-size:clamp(72px,5.9vw,104px) !important;
+  line-height:.94 !important;
+  font-weight:700 !important;
+  letter-spacing:-.058em !important;
+  color:var(--paper) !important;
+  text-shadow:0 3px 22px rgba(0,0,0,.32) !important;
+  animation:heroNameIn .82s cubic-bezier(.2,.7,.2,1) both !important;
+}
+.hero-content .hero-subtitle{
+  margin:0 0 24px !important;
+  max-width:640px !important;
+  font-size:clamp(30px,2.55vw,44px) !important;
+  line-height:1.1 !important;
+  font-weight:450 !important;
+  letter-spacing:-.035em !important;
+  color:#8d8c86 !important;
+  animation:heroSubtitleIn .85s .08s ease both !important;
+}
+.hero-content .hero-description{
+  max-width:610px !important;
+  margin:0 0 33px !important;
+  color:#b1b0aa !important;
+  font-size:16px !important;
+  line-height:1.75 !important;
+  font-weight:400 !important;
+  animation:heroDescriptionIn .85s .15s ease both !important;
+}
+.hero-content .hero-actions{
+  display:flex !important;
+  align-items:center !important;
+  gap:13px !important;
+  animation:heroButtonsIn .85s .22s ease both !important;
+}
+.hero-content .hero-actions .btn{
+  min-height:56px !important;
+  padding:0 21px !important;
+  gap:12px !important;
+  border-radius:4px !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  letter-spacing:-.01em !important;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease !important;
+}
+.hero-content .hero-actions .primary{
+  color:#111 !important;
+  border-color:var(--accent) !important;
+  background:linear-gradient(135deg,#ff9d00,#ffb33d) !important;
+  box-shadow:0 8px 26px rgba(255,157,0,.13) !important;
+}
+.hero-content .hero-actions .primary:hover{
+  transform:translateY(-3px) !important;
+  box-shadow:0 12px 34px rgba(255,157,0,.24) !important;
+}
+.hero-content .hero-actions .secondary{
+  color:#dedcd6 !important;
+  border:1px solid #55544f !important;
+  background:rgba(255,255,255,.015) !important;
+}
+.hero-content .hero-actions .secondary:hover{
+  transform:translateY(-3px) !important;
+  border-color:#8b8981 !important;
+  background:rgba(255,255,255,.035) !important;
+}
+.btn-arrow{transition:transform .2s ease !important}
+.btn:hover .btn-arrow{transform:translateX(3px) !important}
+.linkedin-icon{
+  width:23px !important;height:23px !important;
+  display:grid !important;place-items:center !important;
+  border-radius:3px !important;
+  background:#deddd7 !important;color:#171717 !important;
+  font-size:13px !important;font-weight:800 !important;
+}
+
+@keyframes heroLabelIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+@keyframes heroNameIn{from{opacity:0;transform:translateY(13px);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes heroSubtitleIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@keyframes heroDescriptionIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes heroButtonsIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* About — first content section with portrait slot */
+.about-section{border-top:0 !important}
+.about-layout{
+  display:grid;
+  grid-template-columns:minmax(280px,.72fr) 1.28fr;
+  gap:72px;
+  align-items:center;
+}
+.about-photo-card{
+  position:relative;
+  min-height:480px;
+  border:1px solid #30302e;
+  background:#171717;
+  overflow:hidden;
+}
+.about-photo-card::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.about-photo-card::after{
+  content:"";
+  position:absolute;left:22px;right:22px;bottom:22px;height:1px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+}
+.about-photo-placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;
+  color:#62615c;
+}
+.about-photo-initials{font-size:72px;font-weight:600;letter-spacing:-.05em;color:#292927}
+.about-photo-note{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;color:#5f5e59}
+.about-photo{width:100%;height:100%;object-fit:cover;display:block}
+.about-content h2{max-width:720px;margin:12px 0 28px;font-size:clamp(38px,4.4vw,62px);line-height:1.04;letter-spacing:-.045em}
+.about-content p{max-width:680px;color:#9f9e98;font-size:16px;line-height:1.8}
+.about-content .about-lead{color:#d0cec7;font-size:19px;line-height:1.65}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.about-tags span{padding:8px 10px;border:1px solid #353532;color:#9a9993;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+
+/* Project polish */
+.project-card{transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.project-card:hover{transform:translateY(-4px);border-color:#40403c;background:#1a1a1a}
+.project-visual{position:relative;overflow:hidden}
+.project-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 50%,rgba(255,157,0,.035));opacity:0;transition:opacity .25s ease}
+.project-card:hover .project-visual::after{opacity:1}
+.project-number{position:absolute;top:18px;left:18px;color:#5f5e59;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em}
+
+/* Research / publications */
+.research-section{border-top:1px solid var(--line)}
+.research-list{border-top:1px solid var(--line)}
+.research-item{
+  display:grid;
+  grid-template-columns:70px 1fr auto;
+  gap:26px;
+  align-items:center;
+  padding:29px 0;
+  border-bottom:1px solid var(--line);
+  transition:padding .22s ease,background .22s ease;
+}
+.research-item:hover{padding-left:12px;background:rgba(255,255,255,.012)}
+.research-index{font-family:"IBM Plex Mono",monospace;color:#5f5e59;font-size:10px;letter-spacing:.12em}
+.research-type{font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:9px;letter-spacing:.14em}
+.research-copy h3{margin:6px 0 5px;font-size:20px;font-weight:600;letter-spacing:-.02em}
+.research-copy p{margin:0;color:#77766f;font-size:12px}
+.research-link{color:#bbb9b2;font-size:11px;font-weight:650;white-space:nowrap;transition:color .2s ease}
+.research-item:hover .research-link{color:var(--accent)}
+
+/* Contact rewritten for portfolio/job-search context */
+.contact-actions .btn{min-width:145px}
+
+/* Scroll reveal for content sections */
+.reveal-section{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+.reveal-section.in-view{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .site-header nav{gap:24px !important}
+  .site-header nav a{font-size:12px !important}
+  .about-layout{grid-template-columns:1fr;gap:38px}
+  .about-photo-card{min-height:380px;max-width:520px}
+  .research-item{grid-template-columns:50px 1fr}.research-link{grid-column:2/3;margin-top:4px}
+}
+@media(max-width:560px){
+  .site-header{height:68px !important;padding:0 12px !important;overflow-x:auto}
+  .site-header nav{gap:20px !important;min-width:max-content}
+  .site-header nav a{padding:24px 0 20px !important;font-size:11px !important}
+  .site-header nav a::after{bottom:14px !important}
+  .hero-content h1{font-size:56px !important}
+  .hero-content .hero-subtitle{font-size:27px !important}
+  .hero-content .hero-description{font-size:15px !important}
+  .about-photo-card{min-height:320px}
+  .research-item{grid-template-columns:36px 1fr;gap:14px}
+}
+
+
+/* =========================================================
+   HERO INTRO SEQUENCE — 5s staggered entrance
+   Engine animation intentionally untouched.
+   ========================================================= */
+
+.hero-content .hero-anim {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+/* Label appears first */
+.hero-content .hero-anim-label {
+  transform: translateY(-18px);
+  animation: heroLabelSequence 0.9s cubic-bezier(.22,.75,.18,1) 0.15s forwards;
+}
+
+/* Orange line grows left to right after label begins */
+.hero-content .hero-label::after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: heroLineSequence 1.15s cubic-bezier(.2,.75,.18,1) 0.55s forwards;
+}
+
+/* Name */
+.hero-content .hero-anim-name {
+  transform: translateY(-28px);
+  filter: blur(4px);
+  animation: heroNameSequence 1.0s cubic-bezier(.22,.75,.18,1) 1.35s forwards !important;
+}
+
+/* Subtitle */
+.hero-content .hero-anim-subtitle {
+  transform: translateY(-22px);
+  animation: heroSubtitleSequence 0.9s cubic-bezier(.22,.75,.18,1) 2.20s forwards !important;
+}
+
+/* Description */
+.hero-content .hero-anim-description {
+  transform: translateY(-18px);
+  animation: heroDescriptionSequence 0.85s cubic-bezier(.22,.75,.18,1) 3.00s forwards !important;
+}
+
+/* Buttons container */
+.hero-content .hero-anim-actions {
+  opacity: 1;
+  transform: none;
+  animation: none !important;
+}
+
+/* Buttons arrive one by one */
+.hero-content .hero-actions .btn {
+  opacity: 0;
+  transform: translateY(-20px);
+  will-change: opacity, transform;
+}
+
+.hero-content .hero-actions .btn:nth-child(1) {
+  animation: heroButtonSequence 0.75s cubic-bezier(.22,.75,.18,1) 3.70s forwards;
+}
+
+.hero-content .hero-actions .btn:nth-child(2) {
+  animation: heroButtonSequence 0.75s cubic-bezier(.22,.75,.18,1) 4.25s forwards;
+}
+
+@keyframes heroLabelSequence {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroLineSequence {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes heroNameSequence {
+  from {
+    opacity: 0;
+    transform: translateY(-28px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroSubtitleSequence {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroDescriptionSequence {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroButtonSequence {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content .hero-anim,
+  .hero-content .hero-actions .btn,
+  .hero-content .hero-label::after {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   ABOUT — photo + staggered scroll reveal
+   Hero and engine animation intentionally untouched.
+   ========================================================= */
+
+.about-photo-card {
+  aspect-ratio: 4 / 5;
+  min-height: 0 !important;
+  background: #171717;
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: scale(1.025);
+}
+
+.about-section .about-reveal-photo,
+.about-section .about-reveal-text {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.about-section .about-reveal-photo {
+  transform: translateY(28px) scale(.985);
+  filter: blur(3px);
+}
+
+.about-section .about-reveal-text {
+  transform: translateY(20px);
+}
+
+.about-section.in-view .about-reveal-photo {
+  animation: aboutPhotoReveal 1.05s cubic-bezier(.2,.72,.18,1) .08s forwards;
+}
+
+.about-section.in-view .about-step-1 {
+  animation: aboutTextReveal .72s cubic-bezier(.2,.72,.18,1) .28s forwards;
+}
+
+.about-section.in-view .about-step-2 {
+  animation: aboutTextReveal .82s cubic-bezier(.2,.72,.18,1) .46s forwards;
+}
+
+.about-section.in-view .about-step-3 {
+  animation: aboutTextReveal .82s cubic-bezier(.2,.72,.18,1) .66s forwards;
+}
+
+.about-section.in-view .about-step-4 {
+  animation: aboutTextReveal .82s cubic-bezier(.2,.72,.18,1) .86s forwards;
+}
+
+.about-section.in-view .about-step-5 {
+  animation: aboutTextReveal .82s cubic-bezier(.2,.72,.18,1) 1.06s forwards;
+}
+
+@keyframes aboutPhotoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(.985);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes aboutTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Removed the old keyword chips intentionally. */
+.about-tags {
+  display: none !important;
+}
+
+/* Publication detail */
+.research-copy {
+  max-width: 880px;
+}
+
+.research-summary {
+  max-width: 820px;
+  margin: 12px 0 9px !important;
+  color: #a5a49e !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+}
+
+.research-journal,
+.research-meta {
+  color: #77766f !important;
+  font-size: 11px !important;
+  line-height: 1.55 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-section .about-reveal-photo,
+  .about-section .about-reveal-text {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   ABOUT REFINEMENT — wider portrait + repeatable scroll sequence
+   Hero / engine styles intentionally untouched.
+   ========================================================= */
+
+.about-layout {
+  grid-template-columns: minmax(360px, .82fr) minmax(0, 1.18fr) !important;
+  gap: clamp(48px, 6vw, 92px) !important;
+  align-items: center !important;
+}
+
+.about-photo-card {
+  aspect-ratio: 11 / 13 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.about-photo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 47% !important;
+  transform: none !important;
+}
+
+.about-content h2,
+.about-title {
+  max-width: 650px !important;
+  margin: 12px 0 28px !important;
+  font-size: clamp(30px, 3.15vw, 48px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.038em !important;
+  font-weight: 560 !important;
+}
+
+.about-content p {
+  max-width: 690px !important;
+  margin: 0 0 16px !important;
+  color: #9f9e98 !important;
+  font-size: 15.5px !important;
+  line-height: 1.8 !important;
+}
+
+.about-content .about-lead {
+  color: #d0cec7 !important;
+  font-size: 17px !important;
+  line-height: 1.72 !important;
+}
+
+/* Initial / reset state every time About leaves the viewport */
+.about-section .about-reveal-photo,
+.about-section .about-kicker,
+.about-section .about-title {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.about-section .about-reveal-photo {
+  transform: translateY(34px) scale(.985);
+  filter: blur(4px);
+}
+
+.about-section .about-kicker {
+  transform: translateX(-18px);
+}
+
+.about-section .about-title {
+  transform: translateY(-20px);
+}
+
+.about-section .about-typed {
+  min-height: 1.8em;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Caret shown only while a paragraph is actively typing */
+.about-section .about-typed.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 4px;
+  vertical-align: -0.08em;
+  background: #ff9d00;
+  animation: aboutCaretBlink .72s steps(1,end) infinite;
+}
+
+.about-section.about-active .about-reveal-photo {
+  animation: aboutPhotoRepeat .95s cubic-bezier(.2,.72,.18,1) .06s forwards;
+}
+
+.about-section.about-active .about-kicker {
+  animation: aboutKickerRepeat .6s cubic-bezier(.2,.72,.18,1) .18s forwards;
+}
+
+.about-section.about-active .about-title {
+  animation: aboutTitleRepeat .78s cubic-bezier(.2,.72,.18,1) .42s forwards;
+}
+
+@keyframes aboutPhotoRepeat {
+  from {
+    opacity: 0;
+    transform: translateY(34px) scale(.985);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes aboutKickerRepeat {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes aboutTitleRepeat {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aboutCaretBlink {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0; }
+}
+
+@media (max-width: 980px) {
+  .about-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-photo-card {
+    width: min(620px, 100%);
+    aspect-ratio: 4 / 5 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-section .about-reveal-photo,
+  .about-section .about-kicker,
+  .about-section .about-title {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+
+  .about-section .about-typed::after {
+    display: none !important;
+  }
+}
+
+
+/* =========================================================
+   FIX: About uses its own repeatable animation.
+   The generic .reveal-section rule must not hide the whole
+   About section while its internal animation is waiting.
+   ========================================================= */
+
+#about.reveal-section {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Keep the section itself visible; only its internal elements animate. */
+#about.reveal-section.in-view {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+/* =========================================================
+   ABOUT LAYOUT FIX
+   Keep the heading anchored while the paragraphs type below it.
+   ========================================================= */
+
+#about .about-layout {
+  align-items: start !important;
+}
+
+#about .about-content {
+  align-self: start !important;
+  padding-top: 8px;
+}
+
+#about .about-title {
+  position: relative;
+  margin-bottom: 28px !important;
+}
+
+/* Reserve stable space for the typed copy so the heading never shifts. */
+#about .about-typed {
+  display: block;
+}
+
+#about .about-lead {
+  min-height: 5.2em;
+}
+
+#about .about-lead + .about-typed {
+  min-height: 8.2em;
+}
+
+#about .about-typed:last-child {
+  min-height: 5.2em;
+}
+
+@media (max-width: 980px) {
+  #about .about-lead,
+  #about .about-lead + .about-typed,
+  #about .about-typed:last-child {
+    min-height: 0;
+  }
+}
+
+
+
+/* =========================================================
+   PROJECT 01 — AROSBOX card
+   ========================================================= */
+
+.project-photo {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  min-height: 430px;
+  background: #151515;
+}
+
+.project-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  object-fit: cover;
+  object-position: center 48%;
+  display: block;
+  transition: transform .55s cubic-bezier(.2,.72,.18,1), filter .4s ease;
+  filter: saturate(.88) contrast(1.02) brightness(.82);
+}
+
+.project-card:hover .project-photo img {
+  transform: scale(1.025);
+  filter: saturate(.98) contrast(1.03) brightness(.9);
+}
+
+.project-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,8,.02), rgba(8,8,8,.42));
+  pointer-events: none;
+}
+
+.project-photo .project-number {
+  position: absolute;
+  z-index: 2;
+}
+
+.project-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 18px;
+  margin: 19px 0 22px;
+  color: #85847e;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.project-metrics span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.project-metrics strong {
+  color: #d8d6cf;
+  font-weight: 650;
+}
+
+.project-case-link {
+  color: #f1efe9;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.project-case-link:hover {
+  color: #ff9d00;
+}
+
+
+/* =========================================================
+   HOMEPAGE REFINEMENT
+   ========================================================= */
+
+/* About image: same crop, smaller display size */
+#about .about-photo-card {
+  width: 75% !important;
+  max-width: 430px !important;
+  justify-self: center !important;
+}
+
+/* Keep About copy aligned independently of image height */
+#about .about-content {
+  align-self: start !important;
+}
+
+/* Featured project: return to a compact portfolio-card scale */
+#projects .project-card.feature {
+  grid-template-columns: minmax(0, .82fr) minmax(320px, .58fr) !important;
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+#projects .project-card.feature .project-visual,
+#projects .project-photo {
+  min-height: 300px !important;
+  height: 330px !important;
+}
+
+#projects .project-photo img {
+  min-height: 0 !important;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center center;
+}
+
+#projects .project-card.feature .project-body {
+  padding: 30px 34px !important;
+}
+
+#projects .project-card.feature .project-body h3 {
+  font-size: clamp(24px, 2.35vw, 32px) !important;
+}
+
+#projects .project-card.feature .project-body p {
+  max-width: 520px;
+  font-size: 14px;
+}
+
+.section-head-side {
+  max-width: 520px;
+}
+
+.all-projects-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.all-projects-link:hover {
+  color: #ffc05a;
+}
+
+@media (max-width: 980px) {
+  #about .about-photo-card {
+    width: min(75%, 430px) !important;
+    justify-self: start !important;
+  }
+
+  #projects .project-card.feature {
+    display: block !important;
+    max-width: 720px;
+    margin-inline: 0;
+  }
+
+  #projects .project-card.feature .project-visual,
+  #projects .project-photo {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  #about .about-photo-card {
+    width: 100% !important;
+  }
+
+  #projects .project-card.feature .project-visual,
+  #projects .project-photo {
+    height: 250px !important;
+  }
+}
+
+
+/* =========================================================
+   SECTION POLISH — About / Selected Work / Research / Contact
+   ========================================================= */
+
+/* ABOUT: align image and text, remove paragraph gap */
+#about .about-layout {
+  align-items: start !important;
+}
+
+#about .about-photo-card,
+#about .about-content {
+  align-self: start !important;
+}
+
+#about .about-content {
+  padding-top: 0 !important;
+}
+
+#about .about-title {
+  margin-bottom: 20px !important;
+}
+
+#about .about-typed,
+#about .about-content p {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+#about .about-lead,
+#about .about-lead + .about-typed,
+#about .about-typed:last-child {
+  min-height: 0 !important;
+}
+
+#about .about-typed:last-child,
+#about .about-content p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* SELECTED WORK: cleaner heading, no tag pills */
+.selected-work-section {
+  overflow: hidden;
+}
+
+.selected-work-header {
+  max-width: 760px;
+  margin-bottom: 38px;
+}
+
+.selected-work-header h2 {
+  margin: 9px 0 11px !important;
+  font-size: clamp(30px, 3vw, 44px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em !important;
+  font-weight: 600 !important;
+}
+
+.selected-work-header p {
+  max-width: 650px;
+  margin: 0 !important;
+  color: #8f8e88;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.selected-work-header .all-projects-link {
+  margin-top: 13px;
+}
+
+#projects .tags {
+  display: none !important;
+}
+
+/* Project cards enter from alternating sides */
+#projects .selected-project-anim {
+  opacity: 0;
+  transform: translateX(-44px);
+  transition:
+    opacity .8s cubic-bezier(.2,.72,.18,1),
+    transform .8s cubic-bezier(.2,.72,.18,1);
+}
+
+#projects .selected-project-anim:nth-of-type(even) {
+  transform: translateX(44px);
+}
+
+#projects.in-view .selected-project-anim {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#projects.in-view .selected-project-anim:nth-of-type(1) { transition-delay: .08s; }
+#projects.in-view .selected-project-anim:nth-of-type(2) { transition-delay: .22s; }
+#projects.in-view .selected-project-anim:nth-of-type(3) { transition-delay: .36s; }
+
+/* RESEARCH: single-column heading instead of split heading/text */
+.research-header-clean {
+  max-width: 760px;
+  margin-bottom: 38px;
+}
+
+.research-header-clean h2 {
+  margin: 9px 0 11px !important;
+  font-size: clamp(30px, 3vw, 44px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em !important;
+  font-weight: 600 !important;
+}
+
+.research-header-clean p {
+  max-width: 650px;
+  margin: 0;
+  color: #8f8e88;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* CONTACT: minimal profile hub with icon links */
+.contact-section {
+  padding-top: 76px !important;
+  padding-bottom: 52px !important;
+}
+
+.contact-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px 72px;
+  align-items: end;
+}
+
+.contact-copy h2 {
+  margin: 9px 0 13px !important;
+  font-size: clamp(30px, 3vw, 44px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em !important;
+  font-weight: 600 !important;
+}
+
+.contact-location {
+  margin: 0 0 8px !important;
+  color: #9b9a94 !important;
+  font-size: 14px !important;
+}
+
+.contact-email {
+  color: #dedcd5;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.contact-email:hover {
+  color: #ff9d00;
+}
+
+.contact-socials {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-bottom: 3px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #b9b7b0;
+  text-decoration: none;
+  border-radius: 50%;
+  transition:
+    transform .22s ease,
+    color .22s ease,
+    filter .22s ease;
+}
+
+.social-icon svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.social-icon:hover {
+  transform: scale(1.18);
+  color: #ff9d00;
+  filter: drop-shadow(0 0 8px rgba(255,157,0,.48));
+}
+
+.contact-note {
+  grid-column: 1 / -1;
+  margin: 0 !important;
+  padding-top: 21px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: #686762 !important;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+}
+
+.contact-shell footer {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+
+@media (max-width: 780px) {
+  .contact-shell {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .contact-socials {
+    margin-top: 6px;
+  }
+
+  .selected-work-header,
+  .research-header-clean {
+    margin-bottom: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #projects .selected-project-anim,
+  #projects .selected-project-anim:nth-of-type(even) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .social-icon {
+    transition: none !important;
+  }
+}
+
+
+/* =========================================================
+   POLISH V2 — hero project spinner + clean Selected Work
+   ========================================================= */
+
+/* Hero CTA: one rotating mechanical indicator before the label */
+.hero-actions .primary .project-spinner {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: inline-block;
+  border: 2px solid rgba(18,18,18,.26);
+  border-top-color: #121212;
+  border-right-color: #121212;
+  border-radius: 50%;
+  animation: projectSpinnerRotate 1.25s linear infinite;
+}
+
+@keyframes projectSpinnerRotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Hide all legacy square/arrow icon elements on this button */
+.hero-actions .primary .btn-icon,
+.hero-actions .primary .btn-arrow {
+  display: none !important;
+}
+
+/* Selected Work header: strictly vertical, no text to the right */
+#projects > .section-head,
+#projects .section-head-side,
+#projects .selected-work-header {
+  display: none !important;
+}
+
+#projects .selected-work-header-clean {
+  display: block !important;
+  width: 100% !important;
+  max-width: 660px !important;
+  margin: 0 0 34px 0 !important;
+  padding: 0 !important;
+}
+
+#projects .selected-work-header-clean .kicker {
+  display: block !important;
+  margin: 0 0 10px 0 !important;
+}
+
+#projects .selected-work-header-clean h2 {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 10px 0 !important;
+  font-size: clamp(27px, 2.5vw, 38px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.035em !important;
+  font-weight: 600 !important;
+}
+
+#projects .selected-work-header-clean p {
+  display: block !important;
+  width: 100% !important;
+  max-width: 620px !important;
+  margin: 0 !important;
+  color: #8f8e88 !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+}
+
+/* Remove project-category pills from the homepage Selected Work */
+#projects .tags {
+  display: none !important;
+}
+
+/* User requested no entrance animation for these important projects */
+#projects .project-card,
+#projects .project-card.feature,
+#projects .selected-project-anim,
+#projects .selected-project-anim:nth-of-type(even),
+#projects.in-view .selected-project-anim {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+#projects .project-card,
+#projects .project-card.feature {
+  transition:
+    border-color .22s ease,
+    background .22s ease !important;
+}
+
+/* Contact email */
+.contact-email {
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   CAPABILITIES REFINEMENT + ROBUST HERO GEAR
+   ========================================================= */
+
+/* Robust rotating gear before View Projects */
+.hero-actions .primary .project-spinner {
+  display: none !important;
+}
+
+.hero-actions .primary .project-gear {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  font-size: 19px;
+  line-height: 20px;
+  color: #151515;
+  text-align: center;
+  transform-origin: 50% 50%;
+  animation: projectGearRotate 4.2s linear infinite;
+}
+
+@keyframes projectGearRotate {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- CAPABILITIES ---------- */
+
+.capabilities-section {
+  overflow: hidden;
+}
+
+.capabilities-header {
+  max-width: 720px;
+  margin-bottom: 34px;
+}
+
+.capabilities-header h2 {
+  margin: 9px 0 11px !important;
+  font-size: clamp(28px, 2.7vw, 40px) !important;
+  line-height: 1.07 !important;
+  letter-spacing: -0.038em !important;
+  font-weight: 600 !important;
+}
+
+.capabilities-header p {
+  max-width: 650px;
+  margin: 0 !important;
+  color: #8f8e88;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Override old list layout */
+#capabilities .capabilities {
+  display: none !important;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid #2b2b29;
+  background: #2b2b29;
+}
+
+.capability-card {
+  min-height: 250px;
+  padding: 28px 30px 26px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.014), transparent 48%),
+    #171817;
+  transition:
+    background .24s ease,
+    transform .24s ease;
+}
+
+.capability-card:hover {
+  background:
+    linear-gradient(145deg, rgba(255,157,0,.035), transparent 52%),
+    #191a19;
+}
+
+.capability-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 27px;
+}
+
+.capability-index {
+  flex: 0 0 auto;
+  color: #ff9d00 !important;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 9px !important;
+  letter-spacing: .12em;
+}
+
+.capability-line {
+  display: block;
+  height: 1px;
+  width: 34px;
+  background: rgba(255,157,0,.55);
+}
+
+.capability-card h3 {
+  max-width: 460px;
+  margin: 0 0 12px !important;
+  color: #e4e2dc;
+  font-size: 18px !important;
+  line-height: 1.3;
+  letter-spacing: -.018em;
+  font-weight: 600;
+}
+
+.capability-card p {
+  max-width: 510px;
+  margin: 0 0 22px !important;
+  color: #92918b !important;
+  font-size: 13px !important;
+  line-height: 1.72 !important;
+}
+
+.capability-tools {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: #6f6e69;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 9px;
+  line-height: 1.7;
+  letter-spacing: .035em;
+}
+
+/* Let the cards feel technical without becoming decorative */
+.capability-card:nth-child(2),
+.capability-card:nth-child(4) {
+  background-color: #181918;
+}
+
+@media (max-width: 820px) {
+  .capability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capability-card {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-actions .primary .project-gear {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   HERO GEAR SIZE MATCH
+   ========================================================= */
+
+.hero-actions .primary .project-gear {
+  width: 24px !important;
+  height: 24px !important;
+  flex: 0 0 24px !important;
+  font-size: 23px !important;
+  line-height: 24px !important;
+}
+
+
+
+/* =========================================================
+   SCIENTIFIC CAPABILITIES
+   ========================================================= */
+
+.capability-card-scientific {
+  grid-column: 1 / -1;
+  min-height: 0 !important;
+  background:
+    linear-gradient(135deg, rgba(255,157,0,.026), transparent 42%),
+    #171817 !important;
+}
+
+.capability-card-scientific > p {
+  max-width: 760px;
+}
+
+.scientific-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 24px;
+  border: 1px solid rgba(255,255,255,.07);
+  background: rgba(255,255,255,.07);
+}
+
+.scientific-group {
+  padding: 20px 22px;
+  background: #151615;
+}
+
+.scientific-group strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #d7d5ce;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 9px;
+  line-height: 1.45;
+  letter-spacing: .11em;
+}
+
+.scientific-group span {
+  display: block;
+  color: #85847e;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+@media (max-width: 820px) {
+  .scientific-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   CAPABILITIES — Engineering + Scientific as equal sections
+   ========================================================= */
+
+.capability-group + .capability-group {
+  margin-top: 64px;
+  padding-top: 58px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.scientific-capabilities-header {
+  margin-bottom: 34px;
+}
+
+.scientific-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid #2b2b29;
+  background: #2b2b29;
+}
+
+.scientific-capability-card {
+  min-height: 280px;
+  padding: 28px 30px 26px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.014), transparent 48%),
+    #171817;
+}
+
+.scientific-capability-card h3 {
+  margin: 0 0 18px !important;
+  color: #e4e2dc;
+  font-size: 18px !important;
+  line-height: 1.3;
+  letter-spacing: -.018em;
+  font-weight: 600;
+}
+
+.scientific-skill-list {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: #85847e;
+  font-size: 12.5px;
+  line-height: 1.9;
+}
+
+@media (max-width: 900px) {
+  .scientific-capability-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   CONTACT — static, compact left column + Beluga wireframe
+   ========================================================= */
+
+.contact-section {
+  overflow: hidden;
+  padding-top: 70px !important;
+  padding-bottom: 42px !important;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, .82fr) minmax(460px, 1.18fr);
+  gap: 38px 70px;
+  align-items: center;
+}
+
+.contact-left {
+  align-self: center;
+}
+
+.contact-left .kicker {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.contact-location {
+  margin: 0 0 9px !important;
+  color: #9b9a94 !important;
+  font-size: 14px !important;
+}
+
+.contact-email {
+  display: inline-block;
+  color: #e0ded7;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.contact-email:hover {
+  color: #ff9d00;
+}
+
+.contact-socials {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+  margin-top: 24px;
+  padding: 0;
+}
+
+.contact-note {
+  margin: 24px 0 0 !important;
+  padding-top: 18px;
+  max-width: 430px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: #6e6d68 !important;
+  font-size: 11px !important;
+  line-height: 1.65 !important;
+}
+
+.contact-beluga {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.contact-beluga::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 60% 50%, rgba(255,157,0,.055), transparent 42%),
+    linear-gradient(90deg, #111211 0%, rgba(17,18,17,.10) 22%, transparent 48%);
+}
+
+.contact-beluga img {
+  width: min(100%, 720px);
+  height: auto;
+  display: block;
+  opacity: .76;
+  filter:
+    grayscale(1)
+    sepia(.35)
+    saturate(1.25)
+    brightness(1.15)
+    contrast(1.08);
+  mix-blend-mode: screen;
+  transform: translateX(4%);
+}
+
+/* Contact must be static: no reveal animation */
+#contact {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.contact-layout footer {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-beluga {
+    min-height: 220px;
+    justify-content: flex-start;
+  }
+
+  .contact-beluga img {
+    width: min(100%, 640px);
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   FINAL CAPABILITIES + BELUGA WIREFRAME FIX
+   ========================================================= */
+
+/* Scientific Capabilities is a peer section under Capabilities,
+   so it starts directly with the same h2 typography as Engineering. */
+.scientific-capabilities-header {
+  margin-bottom: 34px !important;
+}
+
+.scientific-capabilities-header h2 {
+  margin: 0 0 11px !important;
+  font-size: clamp(28px, 2.7vw, 40px) !important;
+  line-height: 1.07 !important;
+  letter-spacing: -0.038em !important;
+  font-weight: 600 !important;
+}
+
+.scientific-capabilities-header p {
+  max-width: 650px;
+  margin: 0 !important;
+  color: #8f8e88;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Transparent line-art aircraft: no grey/blue image background,
+   no blend mode, and full aircraft including the nose stays visible. */
+.contact-beluga {
+  overflow: visible !important;
+  min-height: 310px !important;
+  padding: 10px 0 !important;
+}
+
+.contact-beluga::after {
+  display: none !important;
+}
+
+.contact-beluga img {
+  width: 100% !important;
+  max-width: 760px !important;
+  height: auto !important;
+  max-height: 330px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  opacity: .92 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  transform: none !important;
+}
+
+@media (max-width: 900px) {
+  .contact-beluga {
+    min-height: 220px !important;
+  }
+
+  .contact-beluga img {
+    max-width: 680px !important;
+    max-height: none !important;
+  }
+}
+
+
+/* =========================================================
+   AIRCRAFT QUOTE — engineering typewriter loop
+   ========================================================= */
+
+.contact-beluga {
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+}
+
+.aircraft-quote {
+  width: min(100%, 760px);
+  min-height: 32px;
+  margin: 0 0 14px auto;
+  padding-right: 2%;
+  text-align: right;
+
+  color: #d7d5ce;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: clamp(11px, 1vw, 14px);
+  line-height: 1.55;
+  letter-spacing: .055em;
+
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.aircraft-quote.is-typing,
+.aircraft-quote.is-visible {
+  opacity: 1;
+}
+
+.aircraft-quote.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 5px;
+  vertical-align: -0.08em;
+  background: #ff9d00;
+  animation: aircraftCaretBlink .72s steps(1,end) infinite;
+}
+
+.aircraft-quote.is-fading {
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+
+@keyframes aircraftCaretBlink {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .contact-beluga {
+    align-items: flex-start !important;
+  }
+
+  .aircraft-quote {
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+    text-align: left;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aircraft-quote {
+    opacity: 1 !important;
+  }
+
+  .aircraft-quote::after {
+    display: none !important;
+  }
+}
+
+
+/* =========================================================
+   AIRCRAFT QUOTE — final alignment refinement
+   ========================================================= */
+
+.contact-beluga {
+  align-items: stretch !important;
+}
+
+/* Left edge stays fixed; text grows to the right like normal typing. */
+.aircraft-quote {
+  width: 88% !important;
+  max-width: none !important;
+
+  margin: 0 0 18px 10% !important;
+  padding: 0 !important;
+
+  text-align: left !important;
+
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: clamp(8.5px, .72vw, 11px) !important;
+  line-height: 1.45 !important;
+  letter-spacing: .035em !important;
+
+  color: #d8d6cf !important;
+
+  white-space: nowrap !important;
+  overflow: visible !important;
+
+  /* slight upward slope to follow the aircraft fuselage line */
+  transform: rotate(-2.2deg) !important;
+  transform-origin: left center !important;
+}
+
+/* Keep the aircraft itself exactly as before. */
+.contact-beluga img {
+  align-self: flex-end !important;
+}
+
+/* Cursor remains directly after the typed character. */
+.aircraft-quote.is-typing::after {
+  margin-left: 4px !important;
+  background: #ff9d00 !important;
+}
+
+@media (max-width: 900px) {
+  .aircraft-quote {
+    width: 94% !important;
+    margin-left: 3% !important;
+    margin-bottom: 14px !important;
+    font-size: 9px !important;
+    white-space: normal !important;
+    transform: rotate(-1.2deg) !important;
+  }
+}
+
+
+/* =========================================================
+   AIRCRAFT QUOTE — positioned inside the free space above fuselage
+   ========================================================= */
+
+/* Make the aircraft area the positioning reference. */
+.contact-beluga {
+  position: relative !important;
+  display: block !important;
+  overflow: visible !important;
+}
+
+/* Keep the aircraft exactly where it already is. */
+.contact-beluga img {
+  position: relative !important;
+  z-index: 1 !important;
+  display: block !important;
+  margin-left: auto !important;
+}
+
+/* Place the quote in the open wedge above the fuselage.
+   It is allowed to wrap to a second line, but stays clear of the aircraft. */
+.aircraft-quote {
+  position: absolute !important;
+  z-index: 3 !important;
+
+  top: 7% !important;
+  left: 23% !important;
+
+  width: 53% !important;
+  max-width: none !important;
+  min-height: 34px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: left !important;
+
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: clamp(8px, .66vw, 10px) !important;
+  line-height: 1.55 !important;
+  letter-spacing: .028em !important;
+
+  color: #dedcd5 !important;
+
+  white-space: normal !important;
+  overflow: visible !important;
+
+  /* Follow the upper fuselage slope. */
+  transform: rotate(-7deg) !important;
+  transform-origin: left top !important;
+}
+
+/* The caret remains directly after the last typed character. */
+.aircraft-quote.is-typing::after {
+  margin-left: 3px !important;
+  background: #ff9d00 !important;
+}
+
+/* Tablet / narrow desktop */
+@media (max-width: 1100px) {
+  .aircraft-quote {
+    top: 5% !important;
+    left: 18% !important;
+    width: 58% !important;
+    font-size: 8.5px !important;
+    transform: rotate(-6deg) !important;
+  }
+}
+
+/* Mobile: move the quote back above the aircraft to keep it readable. */
+@media (max-width: 760px) {
+  .contact-beluga {
+    padding-top: 54px !important;
+  }
+
+  .aircraft-quote {
+    top: 8px !important;
+    left: 2% !important;
+    width: 92% !important;
+    font-size: 8.5px !important;
+    line-height: 1.5 !important;
+    transform: rotate(-2deg) !important;
+  }
+}
+
+
+/* =========================================================
+   AIRCRAFT QUOTE — closer to fuselage + steeper parallel angle
+   ========================================================= */
+
+.aircraft-quote {
+  top: 20% !important;
+  left: 26% !important;
+  width: 50% !important;
+
+  font-size: clamp(8px, .64vw, 9.8px) !important;
+  line-height: 1.5 !important;
+
+  /* Increase the slope to follow the upper fuselage more closely */
+  transform: rotate(-10deg) !important;
+  transform-origin: left top !important;
+}
+
+@media (max-width: 1100px) {
+  .aircraft-quote {
+    top: 18% !important;
+    left: 23% !important;
+    width: 54% !important;
+    transform: rotate(-9deg) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .aircraft-quote {
+    top: 10px !important;
+    left: 2% !important;
+    width: 92% !important;
+    transform: rotate(-2deg) !important;
+  }
+}
+
+
+/* =========================================================
+   AIRCRAFT QUOTE — image-bound coordinate system
+   ========================================================= */
+
+.contact-beluga {
+  display: block !important;
+  overflow: visible !important;
+}
+
+.aircraft-stage {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 760px !important;
+  margin-left: auto !important;
+  aspect-ratio: 1825 / 1027 !important;
+}
+
+.aircraft-stage img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  margin: 0 !important;
+  z-index: 1 !important;
+}
+
+.aircraft-stage .aircraft-quote {
+  position: absolute !important;
+  z-index: 3 !important;
+
+  top: 24.5% !important;
+  left: 23.5% !important;
+  width: 55% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: clamp(7.5px, .62vw, 9.5px) !important;
+  line-height: 1.5 !important;
+  letter-spacing: .028em !important;
+  color: #dedcd5 !important;
+
+  white-space: normal !important;
+  overflow: visible !important;
+
+  transform: rotate(-12.5deg) !important;
+  transform-origin: left top !important;
+}
+
+.aircraft-stage .aircraft-quote.is-typing::after {
+  margin-left: 3px !important;
+  background: #ff9d00 !important;
+}
+
+@media (max-width: 900px) {
+  .aircraft-stage {
+    max-width: 680px !important;
+    margin-left: 0 !important;
+  }
+
+  .aircraft-stage .aircraft-quote {
+    top: 24% !important;
+    left: 22.5% !important;
+    width: 56% !important;
+    font-size: 8px !important;
+    transform: rotate(-11.5deg) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .aircraft-stage .aircraft-quote {
+    top: 22.5% !important;
+    left: 19% !important;
+    width: 61% !important;
+    font-size: 7.5px !important;
+    line-height: 1.45 !important;
+    transform: rotate(-10deg) !important;
+  }
+}
+
+
+/* =========================================================
+   AIRCRAFT QUOTE — TRUE SVG-BOUND COORDINATE SYSTEM
+   Image + quote now share the exact same 1825×1027 viewBox.
+   This makes the quote scale and move with the aircraft itself.
+   ========================================================= */
+
+.contact-beluga {
+  display: block !important;
+  overflow: visible !important;
+}
+
+.aircraft-stage {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 760px !important;
+  margin-left: auto !important;
+  aspect-ratio: 1825 / 1027 !important;
+}
+
+.aircraft-svg {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* Reset older absolute-positioning rules completely. */
+.aircraft-stage .aircraft-quote {
+  position: static !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+
+  width: 760px !important;
+  max-width: none !important;
+  min-height: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  transform: none !important;
+  transform-origin: initial !important;
+
+  color: #dedcd5 !important;
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: 22px !important;
+  line-height: 1.42 !important;
+  letter-spacing: .025em !important;
+  text-align: left !important;
+
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+/* Caret still follows the typed text. */
+.aircraft-stage .aircraft-quote.is-typing::after {
+  content: "" !important;
+  display: inline-block !important;
+  width: 2px !important;
+  height: 1em !important;
+  margin-left: 6px !important;
+  vertical-align: -0.08em !important;
+  background: #ff9d00 !important;
+  animation: aircraftCaretBlink .72s steps(1,end) infinite !important;
+}
+
+/* Do not reposition the quote at different viewport widths.
+   The SVG itself scales uniformly, so the relative geometry stays locked. */
+@media (max-width: 900px) {
+  .aircraft-stage {
+    max-width: 680px !important;
+    margin-left: 0 !important;
+  }
+
+  .aircraft-stage .aircraft-quote {
+    font-size: 22px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .aircraft-stage .aircraft-quote {
+    font-size: 22px !important;
+  }
+}
+
+
+/* =========================================================
+   ABOUT PHOTO — preserve source quality
+   ========================================================= */
+
+#about .about-photo-card img,
+.about-photo-card img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+
+  /* Prevent browser-side softening from odd transforms/scaling. */
+  transform: none !important;
+  filter: none !important;
+  image-rendering: auto !important;
+  backface-visibility: hidden;
+}
+
+/* Keep the existing visual size while letting the browser use the full-resolution source. */
+#about .about-photo-card {
+  width: 75% !important;
+  max-width: 430px !important;
+}
+
+
+/* =========================================================
+   ABOUT PHOTO — frame/accent follow the actual image height
+   ========================================================= */
+
+#about .about-photo-card,
+.about-photo-card {
+  position: relative !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  overflow: visible !important;
+}
+
+#about .about-photo-card img,
+.about-photo-card img {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Any decorative pseudo-elements now anchor to the actual card/image bounds. */
+#about .about-photo-card::before,
+#about .about-photo-card::after,
+.about-photo-card::before,
+.about-photo-card::after {
+  box-sizing: border-box !important;
+}
+
+/* Keep the orange accent directly under the image instead of below an old fixed box. */
+#about .about-photo-card::after,
+.about-photo-card::after {
+  bottom: -8px !important;
+}
+
+
+/* =========================================================
+   ABOUT PHOTO — clean layout, no orange/yellow accent
+   ========================================================= */
+
+/* Remove the decorative accent/frame elements completely. */
+#about .about-photo-card::before,
+#about .about-photo-card::after,
+.about-photo-card::before,
+.about-photo-card::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Remove any legacy borders/shadows/padding that visually extend below the image. */
+#about .about-photo-card,
+.about-photo-card {
+  width: 100% !important;
+  max-width: 520px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+/* Make the image fill the visual card cleanly. */
+#about .about-photo-card img,
+.about-photo-card img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+
+  object-fit: cover !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Bring image scale closer to the adjacent About text block on desktop. */
+@media (min-width: 901px) {
+  #about .about-grid,
+  #about .about-layout,
+  #about .about-content {
+    align-items: start !important;
+  }
+
+  #about .about-photo-card,
+  .about-photo-card {
+    max-width: 500px !important;
+  }
+}
+
+/* Responsive sizing */
+@media (max-width: 900px) {
+  #about .about-photo-card,
+  .about-photo-card {
+    width: min(100%, 520px) !important;
+    max-width: 520px !important;
+  }
+}

@@ -5,13 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Leo Taheri — Mechatronics Engineer focused on product development, CAD, prototyping and manufacturing.">
 <title>Leo Taheri | Mechatronics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-header">
-  <nav>
-    <a class="active" href="#projects">Projects</a>
+  <nav aria-label="Primary navigation">
     <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -950,34 +954,33 @@
   
   <div class="hero-content">
   
-    <div class="hero-label">
+    <div class="hero-label hero-anim hero-anim-label">
       <span>MECHATRONICS ENGINEERING PORTFOLIO</span>
     </div>
   
-    <h1>
+    <h1 class="hero-anim hero-anim-name">
       Leo Taheri
     </h1>
   
-    <h2 class="hero-subtitle">
+    <h2 class="hero-subtitle hero-anim hero-anim-subtitle">
       Product Development & Mechanical Design
     </h2>
   
-    <p class="hero-description">
+    <p class="hero-description hero-anim hero-anim-description">
       Selected engineering work in CAD, prototyping,
       manufacturing and mechatronic product development.
     </p>
   
-    <div class="hero-actions">
+    <div class="hero-actions hero-anim hero-anim-actions">
 
-      <a class="btn primary" href="#projects">
-        <span class="btn-icon">⌑</span>
-        <span>View Projects</span>
-        <span class="btn-arrow">→</span>
-      </a>
+      <a class="btn primary" href="projects.html">
+    <span class="project-gear" aria-hidden="true">⚙</span>
+    <span>View Projects</span>
+  </a>
     
       <a
         class="btn secondary linkedin-btn"
-        href="www.linkedin.com/in/m-taheripour1994"
+        href="https://www.linkedin.com/in/m-taheripour1994"
         target="_blank"
         rel="noopener noreferrer">
         <span class="linkedin-icon">in</span>
@@ -991,34 +994,391 @@
   
 </section>
 
-<section class="section" id="projects">
-  <div class="section-head"><div><span class="kicker">SELECTED WORK</span><h2>Engineering projects</h2></div><p>Selected work across mechanical design, prototyping, manufacturing and mechatronic product development.</p></div>
+<section class="section about-section reveal-section" id="about">
+  <div class="about-layout">
+    <div class="about-photo-card about-reveal-photo">
+      <img
+        class="about-photo"
+        src="images/about-workshop.jpg"
+        alt="Leo Taheri in a prototyping workshop beside additive-manufacturing equipment and a fabricated prototype"
+        loading="lazy">
+    </div>
+
+    <div class="about-content">
+      <span class="kicker about-kicker">ABOUT</span>
+
+      <h2 class="about-title">
+        Engineering through analysis, experimentation and making.
+      </h2>
+
+      <p
+        class="about-typed about-lead"
+        data-text="With a background in aerospace engineering and structural mechanics, I approach product development from first principles — mechanics, load paths, motion, manufacturability and system integration.">
+      </p>
+
+      <p
+        class="about-typed"
+        data-text="Today, my work is focused on mechanical design, mechanisms and mechatronic prototyping. I enjoy taking ambiguous engineering problems from concept to functional hardware, combining CAD, analysis, fabrication, electronics and programming when the problem calls for it.">
+      </p>
+
+      <p
+        class="about-typed"
+        data-text="I am a hands-on engineer who is most engaged by technically demanding projects that require practical problem solving, experimentation and continuous learning.">
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal-section" id="projects">
+  <div class="selected-work-header-clean">
+    <span class="kicker">SELECTED WORK</span>
+    <h2>Selected Projects</h2>
+    <p>
+      A focused selection of engineering work across product development,
+      mechanical design, prototyping and mechatronic systems.
+    </p>
+  </div>
+
   <div class="project-grid">
-    <article class="project-card feature"><div class="project-visual"></div><div class="project-body"><div class="tags"><span>SolidWorks</span><span>Mechanical Design</span><span>Prototype</span></div><h3>Automated Laboratory System</h3><p>Concept development, mechanical architecture and prototype implementation for an automated technical system.</p><a href="#" class="placeholder">View case study ↗</a></div></article>
-    <article class="project-card"><div class="project-visual"></div><div class="project-body"><div class="tags"><span>Motion</span><span>Electronics</span></div><h3>Custom Mechatronic Platform</h3><p>Integrated mechanical, electronic and motion-control development.</p><a href="#" class="placeholder">View case study ↗</a></div></article>
-    <article class="project-card"><div class="project-visual"></div><div class="project-body"><div class="tags"><span>3D Printing</span><span>Testing</span></div><h3>Rapid Prototype Development</h3><p>Fast iteration from CAD to physical hardware, assembly and validation.</p><a href="#" class="placeholder">View case study ↗</a></div></article>
+    <article class="project-card feature photo-box-card">
+      <a class="project-visual project-photo" href="photo-box.html" aria-label="Open Automated Photo Box project case study">
+        <img src="images/photo-box-system.jpg" alt="Automated photo box system in a laboratory environment">
+        <span class="project-number">01</span>
+      </a>
+      <div class="project-body">
+        <h3>Automated Photo Box</h3>
+        <p>
+          A compact automated imaging system developed to standardize product photography,
+          weighing and data acquisition within a laboratory workflow.
+        </p>
+        <a href="photo-box.html" class="project-case-link">View case study ↗</a>
+      </div>
+    </article>
+    <article class="project-card">
+      <a class="project-visual project-photo" href="label-feeder.html" aria-label="Open Automated Label Feeder and Cutter project case study">
+        <img src="images/label-feeder-cad.png" alt="CAD model of the automated laboratory label feeder and cutter">
+        <span class="project-number">02</span>
+      </a>
+      <div class="project-body">
+        <h3>Automated Label Feeder &amp; Cutter</h3>
+        <p>Sensor-registered feeding and guillotine cutting of laboratory barcode-label groups in a compact mechatronic prototype.</p>
+        <a href="label-feeder.html" class="project-case-link">View case study ↗</a>
+      </div>
+    </article>
+    <article class="project-card">
+      <a class="project-visual project-photo" href="concealed-access-hatch.html" aria-label="Open Motorized Concealed Ceiling Access Hatch project case study">
+        <img src="images/concealed-access-hatch-cad.jpg" alt="SolidWorks CAD model of a motorized concealed ceiling access hatch mechanism">
+        <span class="project-number">03</span>
+      </a>
+      <div class="project-body">
+        <h3>Motorized Concealed Ceiling Access Hatch</h3>
+        <p>
+          Custom mechanism for a near-flush luxury ceiling access panel, combining a drop-and-rotate hinge,
+          cable-pulley actuation and emergency opening redundancy.
+        </p>
+        <a href="concealed-access-hatch.html" class="project-case-link">View case study ↗</a>
+      </div>
+    </article>
+    <div class="projects-archive-link">
+      <a href="projects.html" class="btn primary">View All Projects</a>
+    </div>
+
   </div>
 </section>
 
-<section class="section about" id="about">
-  <div><span class="kicker">ABOUT</span><h2>Engineering between digital design and physical hardware.</h2></div>
-  <div class="about-copy"><p>I am a mechatronics engineer focused on product development and practical R&D. My work combines CAD, mechanism design, prototyping, manufacturing and electronics.</p><p>I am most interested in projects where mechanical, electrical and manufacturing decisions influence each other.</p></div>
-</section>
+<section class="section research-section reveal-section" id="research">
+  <div class="research-header-clean">
+    <span class="kicker">RESEARCH &amp; PUBLICATIONS</span>
+    <h2>Scientific work</h2>
+    <p>
+      Peer-reviewed research in structural mechanics, functionally graded materials
+      and engineering optimization.
+    </p>
+  </div>
 
-<section class="section" id="capabilities">
-  <div class="section-head compact"><div><span class="kicker">CAPABILITIES</span><h2>What I work with</h2></div></div>
-  <div class="capabilities">
-    <div><span>01</span><h3>Mechanical Design & CAD</h3><p>SolidWorks · Assemblies · Mechanisms · Technical Drawings · DFM</p></div>
-    <div><span>02</span><h3>Rapid Prototyping</h3><p>3D Printing · Fixtures · Iteration · Assembly · Validation</p></div>
-    <div><span>03</span><h3>Manufacturing</h3><p>CNC · Fabrication · Cutting · Bending · Production-oriented Design</p></div>
-    <div><span>04</span><h3>Electronics & Embedded</h3><p>Prototyping · Sensors · Actuators · Microcontrollers · PCB Concepts</p></div>
+  <div class="research-list">
+    <article class="research-item">
+      <div class="research-index">01</div>
+
+      <div class="research-copy">
+        <span class="research-type">JOURNAL ARTICLE · 2022</span>
+
+        <h3>
+          Optimum distribution of materials for functionally graded rectangular plates considering thermal buckling
+        </h3>
+
+        <p class="research-meta">
+          Mojtaba Farrokh · Mohammad Taheripur · Erasmo Carrera
+        </p>
+
+        <p class="research-summary">
+          Optimization of material distribution in functionally graded rectangular plates to improve critical thermal-buckling performance, using higher-order plate theory, the Carrera Unified Formulation and finite-element analysis.
+        </p>
+
+        <p class="research-journal">
+          Composite Structures · Vol. 289 · Article 115401 · DOI 10.1016/j.compstruct.2022.115401
+        </p>
+      </div>
+
+      <a
+        href="https://www.sciencedirect.com/science/article/abs/pii/S0263822322001908?via%3Dihub"
+        class="research-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        View publication ↗
+      </a>
+    </article>
+
+    <article class="research-item">
+      <div class="research-index">02</div>
+
+      <div class="research-copy">
+        <span class="research-type">JOURNAL ARTICLE · 2021</span>
+
+        <h3>
+          Optimization of porosity distribution of FGP beams considering buckling strength
+        </h3>
+
+        <p class="research-meta">
+          Mojtaba Farrokh · Mohammad Taheripur
+        </p>
+
+        <p class="research-summary">
+          Optimization of porosity distribution in functionally graded porous beams using a genetic
+          algorithm, with buckling performance evaluated using Euler and Timoshenko beam theories.
+          The study also examines the influence of nano graphene platelet reinforcement.
+        </p>
+
+        <p class="research-journal">
+          Structural Engineering and Mechanics · Vol. 79 · No. 6 · pp. 711–722 · 2021
+        </p>
+      </div>
+
+      <a
+        href="https://www.techno-press.org/content/?page=article&amp;journal=sem&amp;volume=79&amp;num=6&amp;ordernum=5"
+        class="research-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        View publication ↗
+      </a>
+    </article>
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <span class="kicker">CONTACT</span><h2>Have an engineering challenge?</h2><p>Let’s build something that works.</p>
-  <div class="hero-actions"><a class="btn primary" href="mailto:your-email@example.com">your-email@example.com ↗</a><a class="btn secondary placeholder" href="#">LinkedIn ↗</a></div>
-  <footer><span>© <span id="year"></span> Leo Taheri</span><span>Mechanical · Mechatronics · Product Development</span><a href="#top">Back to top ↑</a></footer>
+<section class="section reveal-section capabilities-section" id="capabilities">
+
+  <div class="capability-group capability-group-engineering">
+    <div class="capabilities-header">
+      <span class="kicker">CAPABILITIES</span>
+      <h2>Engineering Capabilities</h2>
+      <p>
+        Practical engineering capabilities developed across product development,
+        mechanical design, prototyping, manufacturing and multidisciplinary R&amp;D.
+      </p>
+    </div>
+
+    <div class="capability-grid engineering-grid">
+
+      <article class="capability-card">
+        <div class="capability-top">
+          <span class="capability-index">01</span>
+          <span class="capability-line"></span>
+        </div>
+        <h3>Mechanical Design &amp; Product Development</h3>
+        <p>
+          Development of mechanical products and mechanisms from concept through
+          detailed CAD, assembly design and production-ready documentation.
+        </p>
+        <div class="capability-tools">
+          SolidWorks · 3D CAD · Assemblies · Mechanisms · Technical Drawings · DFM
+        </div>
+      </article>
+
+      <article class="capability-card">
+        <div class="capability-top">
+          <span class="capability-index">02</span>
+          <span class="capability-line"></span>
+        </div>
+        <h3>Rapid Prototyping &amp; Manufacturing</h3>
+        <p>
+          Hands-on prototype development with iterative build-test-improve cycles,
+          selecting manufacturing methods around geometry, quantity and validation needs.
+        </p>
+        <div class="capability-tools">
+          FDM 3D Printing · CNC Prototyping · Laser-Cut / Fabricated Parts · Assembly · Validation
+        </div>
+      </article>
+
+      <article class="capability-card">
+        <div class="capability-top">
+          <span class="capability-index">03</span>
+          <span class="capability-line"></span>
+        </div>
+        <h3>Mechatronics &amp; Embedded Prototyping</h3>
+        <p>
+          Integration of mechanics with sensors, motors, electronics and embedded
+          control for functional prototypes and automated mechanisms.
+        </p>
+        <div class="capability-tools">
+          Sensors · Motors &amp; Actuators · Microcontrollers · Prototype PCBs · System Integration
+        </div>
+      </article>
+
+      <article class="capability-card">
+        <div class="capability-top">
+          <span class="capability-index">04</span>
+          <span class="capability-line"></span>
+        </div>
+        <h3>Structural Engineering &amp; R&amp;D</h3>
+        <p>
+          Analysis-driven engineering with a foundation in aerospace structures,
+          structural mechanics, research methodology and technical problem solving.
+        </p>
+        <div class="capability-tools">
+          Structural Mechanics · Engineering Analysis · R&amp;D · Design Iteration · Technical Documentation
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="capability-group capability-group-scientific">
+    <div class="capabilities-header scientific-capabilities-header">
+      <h2>Scientific Capabilities</h2>
+      <p>
+        Analytical and computational skills for advanced engineering analysis,
+        numerical modelling, scientific research and technical communication.
+      </p>
+    </div>
+
+    <div class="scientific-capability-grid">
+
+      <article class="scientific-capability-card">
+        <div class="capability-top">
+          <span class="capability-index">A</span>
+          <span class="capability-line"></span>
+        </div>
+        <h3>Analysis &amp; Mechanics</h3>
+        <div class="scientific-skill-list">
+          Structural Analysis<br>
+          Finite Element Method (FEM)<br>
+          Composite Structures<br>
+          Composite Structures Analysis &amp; Design<br>
+          Vibration Analysis<br>
+          Continuum Mechanics
+        </div>
+      </article>
+
+      <article class="scientific-capability-card">
+        <div class="capability-top">
+          <span class="capability-index">B</span>
+          <span class="capability-line"></span>
+        </div>
+        <h3>Computational Tools &amp; Programming</h3>
+        <div class="scientific-skill-list">
+          MATLAB<br>
+          Python<br>
+          C<br>
+          Maple<br>
+          Abaqus<br>
+          ANSYS
+        </div>
+      </article>
+
+      <article class="scientific-capability-card">
+        <div class="capability-top">
+          <span class="capability-index">C</span>
+          <span class="capability-line"></span>
+        </div>
+        <h3>Research &amp; Scientific Writing</h3>
+        <div class="scientific-skill-list">
+          Scientific Research<br>
+          Literature Review<br>
+          Research Methodology<br>
+          Technical &amp; Scientific Writing<br>
+          Journal Article Preparation<br>
+          Engineering Documentation
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+</section>
+
+<section class="contact contact-section" id="contact">
+  <div class="contact-layout">
+
+    <div class="contact-left">
+      <span class="kicker">CONTACT</span>
+
+      <p class="contact-location">Bremen, Germany</p>
+
+      <a class="contact-email" href="mailto:mohammad.taheripur@gmail.com">
+        mohammad.taheripur@gmail.com
+      </a>
+
+      <div class="contact-socials" aria-label="Professional profiles">
+        <a class="social-icon" href="mailto:mohammad.taheripur@gmail.com" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3.5 6.5h17v11h-17z"></path>
+            <path d="m4.2 7.2 7.8 6 7.8-6"></path>
+          </svg>
+        </a>
+
+        <a class="social-icon" href="https://www.linkedin.com/in/m-taheripour1994" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="9" width="3" height="10"></rect>
+            <circle cx="5.5" cy="5.5" r="1.5"></circle>
+            <path d="M10 19V9h3v1.8c1-1.4 2.2-2.1 4-2.1 2.7 0 4 1.8 4 5V19h-3v-4.7c0-1.8-.6-2.8-2.2-2.8-1.7 0-2.8 1.2-2.8 3.4V19z"></path>
+          </svg>
+        </a>
+
+        <a class="social-icon" href="#" aria-label="ResearchGate" title="ResearchGate — add your profile URL">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M8.6 16V8h3.3c2.4 0 3.8 1.1 3.8 3 0 1.3-.7 2.2-1.8 2.6L16.4 16h-2.5l-2.1-2.1h-1V16z"></path>
+            <path d="M10.8 10v2.1h1.1c1 0 1.5-.4 1.5-1s-.5-1.1-1.5-1.1z"></path>
+          </svg>
+        </a>
+
+        <a class="social-icon" href="#" aria-label="Google Scholar" title="Google Scholar — add your profile URL">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m3 9 9-5 9 5-9 5z"></path>
+            <path d="M7 12.2V16c1.5 1.3 3.1 2 5 2s3.5-.7 5-2v-3.8"></path>
+            <path d="M20 10v6"></path>
+          </svg>
+        </a>
+      </div>
+
+      <p class="contact-note">
+        Open to engineering, product-development and R&amp;D opportunities.
+      </p>
+    </div>
+
+    <div class="contact-beluga" aria-hidden="true">
+      <div class="aircraft-stage">
+        <svg class="aircraft-svg" viewBox="0 0 1825 1027" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <image href="images/beluga-wireframe-transparent.png" x="0" y="0" width="1825" height="1027" preserveAspectRatio="xMidYMid meet"></image>
+
+          <g transform="rotate(-16 640 360)">
+            <foreignObject x="640" y="332" width="760" height="120">
+              <div xmlns="http://www.w3.org/1999/xhtml"
+                   class="aircraft-quote"
+                   data-text="Every great aircraft begins with a daring design and engineering that refuses limits."></div>
+            </foreignObject>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <footer>
+      <span>© <span id="year"></span> Leo Taheri</span>
+      <span>Mechatronics · Product Development · Mechanical Design</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+
+  </div>
 </section>
 </main>
 <script src="script.js"></script>

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Automated Label Feeder and Cutter engineering case study by Leo Taheri.">
+  <title>Automated Label Feeder &amp; Cutter — Leo Taheri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#111211;--panel:#171817;--panel2:#1a1b1a;--line:#2c2d2b;
+      --text:#efede7;--muted:#9b9a94;--dim:#74736e;--accent:#ff9d00;--max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);font-family:"Manrope",system-ui,sans-serif;
+      background:
+        linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px),
+        var(--bg);
+      background-size:32px 32px;
+    }
+    a{color:inherit}
+    .wrap{width:min(var(--max),calc(100% - 64px));margin:auto}
+    header{
+      height:80px;border-bottom:1px solid var(--line);display:flex;align-items:center;
+      position:sticky;top:0;z-index:15;background:rgba(17,18,17,.9);backdrop-filter:blur(16px);
+    }
+    header .wrap{display:flex;align-items:center;justify-content:space-between}
+    .back,.name{font-size:12px;text-decoration:none;color:#aaa9a3}
+    .back:hover,.name:hover{color:var(--accent)}
+
+    .hero{padding:72px 0 62px;border-bottom:1px solid var(--line)}
+    .eyebrow{
+      display:flex;align-items:center;gap:14px;color:#aaa9a3;
+      font:10px/1.4 "IBM Plex Mono",monospace;letter-spacing:.18em;margin-bottom:22px;
+    }
+    .eyebrow:after{content:"";width:52px;height:1px;background:var(--accent)}
+    h1{
+      max-width:780px;margin:0 0 20px;font-size:clamp(46px,5.8vw,78px);
+      letter-spacing:-.052em;line-height:.96;font-weight:650;
+    }
+    .lede{max-width:800px;margin:0;color:#afaea8;font-size:16px;line-height:1.75}
+    .hero-image{
+      margin-top:42px;width:min(850px,100%);height:460px;overflow:hidden;
+      border:1px solid var(--line);background:#171817;
+    }
+    .hero-image img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+    .case{padding:72px 0 100px}
+    .blocks{display:grid;gap:18px}
+    .block{
+      display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;
+      padding:38px;border:1px solid var(--line);background:rgba(24,25,24,.88);
+    }
+    .block-label{
+      color:var(--accent);font:10px/1.5 "IBM Plex Mono",monospace;
+      letter-spacing:.14em;padding-top:4px;
+    }
+    .block h2{
+      margin:0 0 18px;font-size:clamp(27px,3vw,39px);line-height:1.08;
+      letter-spacing:-.04em;font-weight:600;max-width:780px;
+    }
+    .block p{margin:0 0 15px;color:#a4a39d;font-size:14px;line-height:1.78;max-width:820px}
+    .block p:last-child{margin-bottom:0}
+
+    .challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+    .challenge{
+      border:1px solid #30312f;background:#151615;padding:22px;min-height:180px;
+    }
+    .challenge .n{font:10px/1 "IBM Plex Mono",monospace;color:var(--accent);margin-bottom:14px}
+    .challenge h3{font-size:15px;margin:0 0 8px;font-weight:600}
+    .challenge p{font-size:12.5px;line-height:1.65;color:#8f8e88;margin:0}
+
+    .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+    .tech{
+      border-top:1px solid #343531;padding:18px 0 0;
+    }
+    .tech strong{
+      display:block;font:10px/1.4 "IBM Plex Mono",monospace;
+      color:#d0cec8;letter-spacing:.08em;margin-bottom:8px;
+    }
+    .tech span{color:#86857f;font-size:12px;line-height:1.55}
+
+    .gallery{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:24px;
+    }
+    .gallery figure{margin:0}
+    .gallery figure:first-child{grid-row:span 2}
+    .gallery img{
+      width:100%;display:block;border:1px solid var(--line);background:#151615;
+      object-fit:cover;
+    }
+    .gallery figure:first-child img{height:520px}
+    .gallery figure:nth-child(2) img,.gallery figure:nth-child(3) img{height:250px}
+    figcaption{
+      padding-top:8px;color:#72716c;font:9px/1.6 "IBM Plex Mono",monospace;
+    }
+
+    .footer{border-top:1px solid var(--line);padding:34px 0 54px;color:#6b6a65;font-size:10px}
+
+    @media(max-width:900px){
+      .wrap{width:min(var(--max),calc(100% - 36px))}
+      .block{grid-template-columns:1fr;gap:18px;padding:28px}
+      .challenge-grid,.tech-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .gallery figure:first-child{grid-row:auto}
+      .gallery figure:first-child img,.gallery figure:nth-child(2) img,.gallery figure:nth-child(3) img{height:auto;max-height:500px}
+      .hero-image{height:380px}
+    }
+    @media(max-width:560px){
+      .hero{padding-top:58px}.hero-image{height:300px}
+      .block{padding:23px}.case{padding-top:54px}
+    }
+  
+    /* Expanded project media gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(12,minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
+    }
+    .gallery figure{
+      margin:0;
+      grid-column:span 6;
+    }
+    .gallery figure.wide{grid-column:1/-1}
+    .gallery figure.tall{grid-column:span 5}
+    .gallery figure.side{grid-column:span 7}
+
+    .gallery .media-frame{
+      position:relative;
+      width:100%;
+      background:#111210;
+      border:1px solid var(--line);
+      overflow:hidden;
+    }
+    .gallery img{
+      width:100%;
+      height:auto;
+      max-height:680px;
+      display:block;
+      object-fit:contain;
+      object-position:center;
+      background:#111210;
+    }
+    .gallery .comparison img{
+      max-height:none;
+      object-fit:contain;
+    }
+    .gallery video{
+      width:100%;
+      aspect-ratio:16/9;
+      display:block;
+      object-fit:contain;
+      background:#0e0f0e;
+    }
+    .video-note{
+      position:absolute;
+      top:12px;
+      left:12px;
+      z-index:2;
+      padding:7px 9px;
+      border:1px solid #393a36;
+      background:rgba(14,15,14,.78);
+      color:#b7b5ae;
+      font:9px/1.4 "IBM Plex Mono",monospace;
+      letter-spacing:.08em;
+      backdrop-filter:blur(6px);
+    }
+figcaption{
+      padding-top:9px;
+      color:#787771;
+      font:9px/1.6 "IBM Plex Mono",monospace;
+    }
+
+    @media(max-width:900px){
+      .gallery{grid-template-columns:1fr}
+      .gallery figure,
+      .gallery figure.wide,
+      .gallery figure.tall,
+      .gallery figure.side{grid-column:auto}
+      .gallery img{max-height:none}
+      .team-photo .privacy-emoji{
+        width:34px;height:34px;font-size:23px;
+        box-shadow:0 0 0 2px rgba(17,18,16,.85);
+      }
+    }
+
+  
+    .hero-image{height:auto!important;background:#f1f2f4!important}
+    .hero-image img{width:100%;height:auto;max-height:650px;object-fit:contain!important;display:block}
+    .gallery .media-frame{position:relative;width:100%;background:#111210;border:1px solid var(--line);overflow:hidden}
+    .gallery img{width:100%;height:auto!important;max-height:680px;object-fit:contain!important;display:block;background:#111210}
+    .gallery video{width:100%;aspect-ratio:16/9;display:block;background:#0e0f0e;object-fit:contain}
+    .video-note{position:absolute;top:12px;left:12px;z-index:2;padding:7px 9px;border:1px solid #393a36;background:rgba(14,15,14,.78);color:#b7b5ae;font:9px/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;backdrop-filter:blur(6px)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="back" href="projects.html">← All Projects</a><a class="name" href="index.html">Leo Taheri</a></div></header>
+<main>
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">PROJECT 02 · MECHATRONICS &amp; RAPID PROTOTYPING</div>
+  <h1>Automated Label Feeder &amp; Cutter</h1>
+  <p class="lede">A compact laboratory machine developed to automatically feed, register and guillotine-cut groups of barcode labels — replacing repetitive manual cutting while preventing cumulative positioning error.</p>
+  <div class="hero-image"><img src="images/label-feeder-cad.png" alt="CAD assembly of automated label feeder and cutter"></div>
+</div></section>
+
+<section class="case"><div class="wrap blocks">
+  <article class="block"><div class="block-label">01 · PROJECT &amp; PROBLEM</div><div>
+    <h2>Automating a repetitive laboratory labeling workflow.</h2>
+    <p>Laboratory samples were identified with barcode labels printed on rolls. The roll contained five labels across, while the same barcode could repeat over several consecutive rows. Each repeated group therefore had to remain together when separated from the roll.</p>
+    <p>Previously, users cut these groups manually with scissors. The goal was to automate the process: feed the correct number of label rows, stop in the gap between groups, cut cleanly, and repeat without damaging a printed label.</p>
+  </div></article>
+
+  <article class="block"><div class="block-label">02 · SOLUTION</div><div>
+    <h2>Sensor-registered feeding with a geared roller and motorized guillotine.</h2>
+    <p>The prototype combined a driven feed roller, reduction gearing, adjustable web guidance, optical sensing, a motorized guillotine, custom electronics and embedded control.</p>
+    <p>Instead of relying only on a fixed motor travel distance, the system counted label transitions directly. This removed sensitivity to the first manual alignment and prevented small feed errors from accumulating over many cycles.</p>
+  </div></article>
+
+  <article class="block"><div class="block-label">03 · ENGINEERING CHALLENGES</div><div>
+    <h2>A simple-looking machine with tightly coupled mechanical, sensing and control problems.</h2>
+    <div class="challenge-grid">
+      <div class="challenge"><div class="n">01</div><h3>Reliable label feeding</h3><p>Printable rollers initially slipped against the label web. Multiple geometries and surface concepts were tested before a silicone-covered roller provided the required grip.</p></div>
+      <div class="challenge"><div class="n">02</div><h3>Torque &amp; feed speed</h3><p>A gear train reduced feed speed and increased available torque so the mechanism could move the large, heavy label roll reliably.</p></div>
+      <div class="challenge"><div class="n">03</div><h3>Web tracking</h3><p>Repeated feeding caused the strip to migrate sideways. Adjustable guides and alignment features were introduced to keep the web centered and prevent tearing at the frame.</p></div>
+      <div class="challenge"><div class="n">04</div><h3>Guillotine cutting</h3><p>Several cutting concepts were tested. A guillotine mechanism gave the best result, with blade angle, contact geometry and actuator motion iterated for clean, repeatable cuts.</p></div>
+      <div class="challenge"><div class="n">05</div><h3>Registration without drift</h3><p>Fixed-step feeding could not guarantee accuracy because small errors accumulated. Sensor-based label counting was developed so each cut was registered to the printed pattern itself.</p></div>
+      <div class="challenge"><div class="n">06</div><h3>Sensor integration</h3><p>Several sensors were evaluated. Ambient light and limited installation space required electronic modification of the selected sensor plus a custom light-shielding cover.</p></div>
+      <div class="challenge"><div class="n">07</div><h3>Plastic-first architecture</h3><p>Most of the machine was designed for additive manufacturing, so stiffness, fastening, load paths and serviceability had to be engineered around printed polymer parts.</p></div>
+      <div class="challenge"><div class="n">08</div><h3>Less than three weeks</h3><p>The working demonstrator had to be ready in under three weeks for a presentation, demanding rapid iteration across mechanics, electronics and firmware.</p></div>
+    </div>
+  </div></article>
+
+  <article class="block"><div class="block-label">04 · MY ROLE</div><div>
+    <h2>End-to-end prototype development.</h2>
+    <p>I carried out the mechanical architecture, CAD development, printed-part iteration, feed-system optimization, sensor evaluation and modification, custom PCB design, wiring, motor integration and embedded programming.</p>
+    <p>The project was originally intended as a functional prototype before a more industrialized version. Because only one unit was required and the prototype already performed the laboratory task reliably, it remained in direct use.</p>
+  </div></article>
+
+  <article class="block"><div class="block-label">05 · TECHNOLOGY &amp; SKILLS</div><div>
+    <h2>Mechanical design, electronics and embedded control in one rapid-development cycle.</h2>
+    <div class="tech-grid">
+      <div class="tech"><strong>MECHANICAL</strong><span>SolidWorks · mechanism design · gear trains · guillotine development · adjustable guides</span></div>
+      <div class="tech"><strong>PROTOTYPING</strong><span>FDM 3D printing · iterative testing · polymer design · rapid fabrication</span></div>
+      <div class="tech"><strong>ELECTRONICS</strong><span>KiCad · custom PCB · sensor adaptation · motor interfaces · power electronics</span></div>
+      <div class="tech"><strong>CONTROL</strong><span>ESP32 · embedded programming · sensor logic · motor sequencing</span></div>
+      <div class="tech"><strong>VALIDATION</strong><span>Feed testing · cut-position accuracy · ambient-light testing · repeated-cycle evaluation</span></div>
+      <div class="tech"><strong>DELIVERY</strong><span>Concept-to-prototype development in under three weeks</span></div>
+    </div>
+  </div></article>
+
+  <article class="block"><div class="block-label">06 · PROJECT MEDIA</div><div>
+    <h2>CAD, electronics and functional prototype development.</h2>
+    <div class="gallery">
+      <figure class="wide"><div class="media-frame"><img src="images/label-feeder-cad.png" alt="Complete CAD assembly of automated label feeder and cutter"></div><figcaption>COMPLETE CAD ASSEMBLY — Feed roll, geared drive, adjustable guides and motorized guillotine integrated into a compact, predominantly 3D-printed architecture.</figcaption></figure>
+      <figure><div class="media-frame"><img src="images/label-feeder-pcb-layout.png" alt="PCB layout for automated label feeder controller"></div><figcaption>PCB DEVELOPMENT — Custom controller layout integrating the microcontroller, motor interfaces, sensor inputs and power electronics.</figcaption></figure>
+      <figure><div class="media-frame"><img src="images/label-feeder-pcb-prototype.jpg" alt="Physical prototype controller board for label feeder"></div><figcaption>ELECTRONICS PROTOTYPE — Hand-built controller board used during functional validation of the machine.</figcaption></figure>
+      <figure class="wide"><div class="media-frame"><div class="video-note">VIDEO · ADD FILE AS label-feeder-demo.mp4</div><video controls preload="metadata"><source src="videos/label-feeder-demo.mp4" type="video/mp4"></video></div><figcaption>FUNCTIONAL DEMONSTRATION — Automated feeding, label counting and guillotine cutting sequence.</figcaption></figure>
+    </div>
+  </div></article>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap">© <span id="year"></span> Leo Taheri · Engineering Portfolio</div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body></html>

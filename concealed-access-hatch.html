@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Motorized Concealed Ceiling Access Hatch engineering case study by Leo Taheri.">
+<title>Motorized Concealed Ceiling Access Hatch — Leo Taheri</title>
+<style>
+
+    :root{
+      --bg:#111211;--panel:#171817;--panel2:#1a1b1a;--line:#2c2d2b;
+      --text:#efede7;--muted:#9b9a94;--dim:#74736e;--accent:#ff9d00;--max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);font-family:"Manrope",system-ui,sans-serif;
+      background:
+        linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px),
+        var(--bg);
+      background-size:32px 32px;
+    }
+    a{color:inherit}
+    .wrap{width:min(var(--max),calc(100% - 64px));margin:auto}
+    header{
+      height:80px;border-bottom:1px solid var(--line);display:flex;align-items:center;
+      position:sticky;top:0;z-index:15;background:rgba(17,18,17,.9);backdrop-filter:blur(16px);
+    }
+    header .wrap{display:flex;align-items:center;justify-content:space-between}
+    .back,.name{font-size:12px;text-decoration:none;color:#aaa9a3}
+    .back:hover,.name:hover{color:var(--accent)}
+
+    .hero{padding:72px 0 62px;border-bottom:1px solid var(--line)}
+    .eyebrow{
+      display:flex;align-items:center;gap:14px;color:#aaa9a3;
+      font:10px/1.4 "IBM Plex Mono",monospace;letter-spacing:.18em;margin-bottom:22px;
+    }
+    .eyebrow:after{content:"";width:52px;height:1px;background:var(--accent)}
+    h1{
+      max-width:780px;margin:0 0 20px;font-size:clamp(46px,5.8vw,78px);
+      letter-spacing:-.052em;line-height:.96;font-weight:650;
+    }
+    .lede{max-width:800px;margin:0;color:#afaea8;font-size:16px;line-height:1.75}
+    .hero-image{
+      margin-top:42px;width:min(850px,100%);height:460px;overflow:hidden;
+      border:1px solid var(--line);background:#171817;
+    }
+    .hero-image img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+    .case{padding:72px 0 100px}
+    .blocks{display:grid;gap:18px}
+    .block{
+      display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;
+      padding:38px;border:1px solid var(--line);background:rgba(24,25,24,.88);
+    }
+    .block-label{
+      color:var(--accent);font:10px/1.5 "IBM Plex Mono",monospace;
+      letter-spacing:.14em;padding-top:4px;
+    }
+    .block h2{
+      margin:0 0 18px;font-size:clamp(27px,3vw,39px);line-height:1.08;
+      letter-spacing:-.04em;font-weight:600;max-width:780px;
+    }
+    .block p{margin:0 0 15px;color:#a4a39d;font-size:14px;line-height:1.78;max-width:820px}
+    .block p:last-child{margin-bottom:0}
+
+    .challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+    .challenge{
+      border:1px solid #30312f;background:#151615;padding:22px;min-height:180px;
+    }
+    .challenge .n{font:10px/1 "IBM Plex Mono",monospace;color:var(--accent);margin-bottom:14px}
+    .challenge h3{font-size:15px;margin:0 0 8px;font-weight:600}
+    .challenge p{font-size:12.5px;line-height:1.65;color:#8f8e88;margin:0}
+
+    .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+    .tech{
+      border-top:1px solid #343531;padding:18px 0 0;
+    }
+    .tech strong{
+      display:block;font:10px/1.4 "IBM Plex Mono",monospace;
+      color:#d0cec8;letter-spacing:.08em;margin-bottom:8px;
+    }
+    .tech span{color:#86857f;font-size:12px;line-height:1.55}
+
+    .gallery{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:24px;
+    }
+    .gallery figure{margin:0}
+    .gallery figure:first-child{grid-row:span 2}
+    .gallery img{
+      width:100%;display:block;border:1px solid var(--line);background:#151615;
+      object-fit:cover;
+    }
+    .gallery figure:first-child img{height:520px}
+    .gallery figure:nth-child(2) img,.gallery figure:nth-child(3) img{height:250px}
+    figcaption{
+      padding-top:8px;color:#72716c;font:9px/1.6 "IBM Plex Mono",monospace;
+    }
+
+    .footer{border-top:1px solid var(--line);padding:34px 0 54px;color:#6b6a65;font-size:10px}
+
+    @media(max-width:900px){
+      .wrap{width:min(var(--max),calc(100% - 36px))}
+      .block{grid-template-columns:1fr;gap:18px;padding:28px}
+      .challenge-grid,.tech-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .gallery figure:first-child{grid-row:auto}
+      .gallery figure:first-child img,.gallery figure:nth-child(2) img,.gallery figure:nth-child(3) img{height:auto;max-height:500px}
+      .hero-image{height:380px}
+    }
+    @media(max-width:560px){
+      .hero{padding-top:58px}.hero-image{height:300px}
+      .block{padding:23px}.case{padding-top:54px}
+    }
+  
+    /* Expanded project media gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(12,minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
+    }
+    .gallery figure{
+      margin:0;
+      grid-column:span 6;
+    }
+    .gallery figure.wide{grid-column:1/-1}
+    .gallery figure.tall{grid-column:span 5}
+    .gallery figure.side{grid-column:span 7}
+
+    .gallery .media-frame{
+      position:relative;
+      width:100%;
+      background:#111210;
+      border:1px solid var(--line);
+      overflow:hidden;
+    }
+    .gallery img{
+      width:100%;
+      height:auto;
+      max-height:680px;
+      display:block;
+      object-fit:contain;
+      object-position:center;
+      background:#111210;
+    }
+    .gallery .comparison img{
+      max-height:none;
+      object-fit:contain;
+    }
+    .gallery video{
+      width:100%;
+      aspect-ratio:16/9;
+      display:block;
+      object-fit:contain;
+      background:#0e0f0e;
+    }
+    .video-note{
+      position:absolute;
+      top:12px;
+      left:12px;
+      z-index:2;
+      padding:7px 9px;
+      border:1px solid #393a36;
+      background:rgba(14,15,14,.78);
+      color:#b7b5ae;
+      font:9px/1.4 "IBM Plex Mono",monospace;
+      letter-spacing:.08em;
+      backdrop-filter:blur(6px);
+    }
+figcaption{
+      padding-top:9px;
+      color:#787771;
+      font:9px/1.6 "IBM Plex Mono",monospace;
+    }
+
+    @media(max-width:900px){
+      .gallery{grid-template-columns:1fr}
+      .gallery figure,
+      .gallery figure.wide,
+      .gallery figure.tall,
+      .gallery figure.side{grid-column:auto}
+      .gallery img{max-height:none}
+      .team-photo .privacy-emoji{
+        width:34px;height:34px;font-size:23px;
+        box-shadow:0 0 0 2px rgba(17,18,16,.85);
+      }
+    }
+
+  
+    .hero-image{height:auto!important;background:#f1f2f4!important}
+    .hero-image img{width:100%;height:auto;max-height:650px;object-fit:contain!important;display:block}
+    .gallery .media-frame{position:relative;width:100%;background:#111210;border:1px solid var(--line);overflow:hidden}
+    .gallery img{width:100%;height:auto!important;max-height:680px;object-fit:contain!important;display:block;background:#111210}
+    .gallery video{width:100%;aspect-ratio:16/9;display:block;background:#0e0f0e;object-fit:contain}
+    .video-note{position:absolute;top:12px;left:12px;z-index:2;padding:7px 9px;border:1px solid #393a36;background:rgba(14,15,14,.78);color:#b7b5ae;font:9px/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;backdrop-filter:blur(6px)}
+
+
+    .hero-image{height:auto!important;background:#f3f4f6!important}
+    .hero-image img{
+      width:100%;
+      height:auto;
+      max-height:680px;
+      object-fit:contain!important;
+      display:block;
+      background:#f3f4f6;
+    }
+    .gallery.single{grid-template-columns:1fr!important}
+    .gallery.single figure{grid-column:auto!important}
+    .gallery.single img{
+      width:100%;
+      height:auto!important;
+      max-height:760px;
+      object-fit:contain!important;
+      display:block;
+      background:#f3f4f6;
+    }
+
+</style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <a class="back" href="projects.html">← All Projects</a>
+    <a class="name" href="index.html">Leo Taheri</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PROJECT 03 · MECHANICAL DESIGN &amp; MECHANISM DEVELOPMENT</div>
+    <h1>Motorized Concealed Ceiling Access Hatch</h1>
+    <p class="lede">
+      A scalable motorized access-panel mechanism developed for a luxury residential project,
+      where the closed hatch had to visually disappear into the ceiling while still providing reliable service access.
+    </p>
+    <div class="hero-image">
+      <img src="images/concealed-access-hatch-cad.jpg" alt="SolidWorks CAD model of motorized concealed ceiling access hatch structure and mechanism">
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap blocks">
+
+    <article class="block">
+      <div class="block-label">01 · PROJECT &amp; PROBLEM</div>
+      <div>
+        <h2>Service access without compromising the architecture.</h2>
+        <p>
+          HVAC and building-services equipment located above finished ceilings required maintenance access.
+          In a high-end residential environment, however, a conventional visible metal or timber access panel would interrupt the interior design.
+        </p>
+        <p>
+          The requirement was therefore unusual: create an electrically operated access hatch that could carry the same decorative ceiling finish
+          as the surrounding surface and remain visually discreet when closed. The allowable perimeter gap was approximately one millimeter,
+          while the finished panel itself could be relatively thick because of its metal structure, plaster and decorative finish.
+        </p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-label">02 · CORE MECHANISM</div>
+      <div>
+        <h2>Drop first, then rotate.</h2>
+        <p>
+          A conventional hinge could not work with such a small perimeter gap: the edge of the thick finished panel would collide with the ceiling
+          as soon as rotation began. I therefore designed a dedicated hinge mechanism that first translated the hatch slightly downward,
+          creating the necessary clearance, and only then allowed the panel to rotate open.
+        </p>
+        <p>
+          The opening motion was driven by an electric motor through a cable-and-pulley system.
+          The mechanism had to manage the panel mass smoothly while keeping the visible ceiling surface free of handles or exposed hardware.
+        </p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-label">03 · ENGINEERING CHALLENGES</div>
+      <div>
+        <h2>A mechanism shaped by architectural tolerances, variable geometry and failure scenarios.</h2>
+
+        <div class="challenge-grid">
+          <div class="challenge">
+            <div class="n">01</div>
+            <h3>Near-flush appearance</h3>
+            <p>
+              The closed hatch needed to blend into the surrounding ceiling with an approximately 1 mm perimeter gap,
+              despite the panel thickness and decorative finishing layers.
+            </p>
+          </div>
+
+          <div class="challenge">
+            <div class="n">02</div>
+            <h3>Collision-free opening</h3>
+            <p>
+              The custom hinge created a controlled downward translation before rotation,
+              preventing the finished edge from binding against the ceiling.
+            </p>
+          </div>
+
+          <div class="challenge">
+            <div class="n">03</div>
+            <h3>Different hatch dimensions</h3>
+            <p>
+              Every installation could require a different opening size because of ceiling framing,
+              service-equipment location and architectural constraints. The main frame was therefore designed as a scalable architecture
+              while keeping the core mechanisms reusable.
+            </p>
+          </div>
+
+          <div class="challenge">
+            <div class="n">04</div>
+            <h3>Motorized actuation</h3>
+            <p>
+              A cable-and-pulley transmission was developed to open and close the panel while keeping the drive hardware concealed above the ceiling.
+            </p>
+          </div>
+
+          <div class="challenge">
+            <div class="n">05</div>
+            <h3>Emergency operation</h3>
+            <p>
+              Because there was no external handle or visible release point, a power-loss or main-drive failure required a separate solution.
+              A redundant drive concept was developed in which a secondary motor, powered from the building emergency supply,
+              could disengage the primary gearbox and take over the opening function.
+            </p>
+          </div>
+
+          <div class="challenge">
+            <div class="n">06</div>
+            <h3>Manufacturing repeatability</h3>
+            <p>
+              The mechanism interfaces were standardized so different hatch sizes could be produced without redesigning the entire system,
+              improving fabrication and assembly speed across multiple installations.
+            </p>
+          </div>
+
+          <div class="challenge">
+            <div class="n">07</div>
+            <h3>Transport protection</h3>
+            <p>
+              Dedicated transport fixtures were considered and designed so the completed mechanisms and finished panels could reach the installation site
+              without distortion or cosmetic damage.
+            </p>
+          </div>
+
+          <div class="challenge">
+            <div class="n">08</div>
+            <h3>Architecture–engineering coordination</h3>
+            <p>
+              The design evolved through coordination with architectural requirements, fabrication constraints and feedback from senior engineers,
+              turning a visual design intent into a manufacturable mechanism.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-label">04 · MY ROLE</div>
+      <div>
+        <h2>Mechanical design from concept through production-ready architecture.</h2>
+        <p>
+          I was responsible for the mechanical design of the access hatch, including the structural frame,
+          custom hinge kinematics, drive concept, pulley/cable arrangement, emergency-release architecture
+          and adaptation of the system to different opening dimensions.
+        </p>
+        <p>
+          This was one of my earlier professional product-development projects and gave me direct experience in taking an architectural requirement,
+          developing a mechanism around it, resolving manufacturing constraints and preparing a design that could be repeatedly fabricated and installed.
+        </p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-label">05 · TECHNOLOGY &amp; SKILLS</div>
+      <div>
+        <h2>Mechanism design under tight architectural and manufacturing constraints.</h2>
+
+        <div class="tech-grid">
+          <div class="tech">
+            <strong>MECHANICAL DESIGN</strong>
+            <span>SolidWorks · assemblies · structural frames · custom hinges · mechanism packaging</span>
+          </div>
+
+          <div class="tech">
+            <strong>KINEMATICS</strong>
+            <span>Drop-and-rotate motion · collision avoidance · clearance management · motion sequencing</span>
+          </div>
+
+          <div class="tech">
+            <strong>ACTUATION</strong>
+            <span>Electric motors · cable &amp; pulley transmission · gearbox integration · redundant drive concept</span>
+          </div>
+
+          <div class="tech">
+            <strong>DESIGN FOR VARIANTS</strong>
+            <span>Scalable frame architecture · reusable mechanism modules · variable opening dimensions</span>
+          </div>
+
+          <div class="tech">
+            <strong>MANUFACTURING</strong>
+            <span>Fabrication planning · assembly considerations · tolerance management · transport fixtures</span>
+          </div>
+
+          <div class="tech">
+            <strong>COLLABORATION</strong>
+            <span>Architectural coordination · design reviews · production feedback · iterative development</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-label">06 · PROJECT MEDIA</div>
+      <div>
+        <h2>Mechanism and structural CAD development.</h2>
+
+        <div class="gallery single">
+          <figure class="wide">
+            <div class="media-frame">
+              <img src="images/concealed-access-hatch-cad.jpg" alt="SolidWorks assembly showing the structural frame and concealed access hatch mechanism">
+            </div>
+            <figcaption>
+              CAD ASSEMBLY — Structural frame and actuation architecture for the concealed ceiling access hatch.
+              Additional project imagery can be added to this case study later.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">© <span id="year"></span> Leo Taheri · Engineering Portfolio</div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
