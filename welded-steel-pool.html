@@ -225,7 +225,48 @@ figcaption{
       border:1px solid var(--line)!important;
     }
 
-  </style>
+  
+    /* Project 06 expanded media gallery */
+    .gallery.pool-gallery{
+      display:grid!important;
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+      gap:20px!important;
+      max-width:980px!important;
+      margin:26px auto 0!important;
+    }
+    .gallery.pool-gallery figure{
+      margin:0!important;
+    }
+    .gallery.pool-gallery figure.wide{
+      grid-column:1/-1!important;
+    }
+    .gallery.pool-gallery .media-frame{
+      border:1px solid var(--line)!important;
+      background:#f1f2f4!important;
+      overflow:hidden!important;
+    }
+    .gallery.pool-gallery img{
+      width:100%!important;
+      height:auto!important;
+      max-height:560px!important;
+      display:block!important;
+      object-fit:contain!important;
+      background:#f1f2f4!important;
+    }
+    .gallery.pool-gallery figure.wide img{
+      max-height:640px!important;
+    }
+    @media(max-width:820px){
+      .gallery.pool-gallery{
+        grid-template-columns:1fr!important;
+        max-width:620px!important;
+      }
+      .gallery.pool-gallery figure.wide{
+        grid-column:auto!important;
+      }
+    }
+
+</style>
 </head>
 <body>
 
@@ -247,7 +288,7 @@ figcaption{
       </p>
 
       <div class="hero-image">
-        <img src="images/welded-steel-pool-cad.jpg" alt="SolidWorks CAD model of a welded steel swimming pool structural frame">
+        <img src="images/pool-complete-cad-view-a.png" alt="Complete SolidWorks assembly of welded steel swimming pool structure and sheet-metal shell">
       </div>
     </div>
   </section>
@@ -275,15 +316,22 @@ figcaption{
       <article class="block">
         <div class="block-label">02 / ENGINEERING WORKFLOW</div>
         <div>
-          <h2>Model first, fabricate second.</h2>
+          <h2>Model first, verify digitally, then release fabrication drawings.</h2>
           <p>
             Structural members from the engineering drawings were recreated in SolidWorks and assembled into a complete pool frame.
-            The steel lining was then developed over the structure as individual sheet-metal components.
+            The steel lining was then developed over the structure as individual sheet-metal components so the complete pool shell
+            could be checked virtually before anything was fabricated.
           </p>
           <p>
-            Each plate was formed virtually, checked against adjacent parts and then flattened to generate fabrication geometry
-            for cutting and bending. This digital assembly step exposed dimensional conflicts before material reached the workshop
-            or the installation site.
+            Each sheet was modelled in its final bent condition and then flattened to generate the cutting geometry.
+            Before bending, the flat patterns were prepared for laser cutting from steel sheet. Every part received a unique identification
+            code that could be marked on the cut component, allowing the bending workshop and installation team to match each physical sheet
+            directly to its position on the assembly drawings.
+          </p>
+          <p>
+            After laser cutting, the sheets were bent one by one according to the fabrication drawings. The complete digital assembly
+            made it possible to detect dimensional conflicts, incorrect interfaces and fit-up problems before the parts reached the site,
+            significantly reducing rework during welding and installation.
           </p>
         </div>
       </article>
@@ -356,8 +404,8 @@ figcaption{
           <div class="tech-grid">
             <div class="tech"><strong>CAD &amp; DETAILING</strong><span>SolidWorks · AutoCAD interpretation · assemblies · fabrication drawings</span></div>
             <div class="tech"><strong>STRUCTURAL MODELLING</strong><span>Steel frames · beam layouts · dimensional coordination · interference checking</span></div>
-            <div class="tech"><strong>SHEET METAL</strong><span>Formed steel plates · flat patterns · bend development · production geometry</span></div>
-            <div class="tech"><strong>FABRICATION</strong><span>Cutting · bending · welded joints · workshop coordination</span></div>
+            <div class="tech"><strong>SHEET METAL</strong><span>Formed steel plates · flat patterns · laser-cut geometry · bend development</span></div>
+            <div class="tech"><strong>FABRICATION</strong><span>Laser cutting · part identification · bending · welded joints · workshop coordination</span></div>
             <div class="tech"><strong>DESIGN VERIFICATION</strong><span>3D pre-assembly · clash detection · drawing review · dimensional checks</span></div>
             <div class="tech"><strong>SITE SUPPORT</strong><span>Installation supervision · fit-up review · fabrication feedback</span></div>
           </div>
@@ -365,16 +413,82 @@ figcaption{
       </article>
 
       <article class="block">
-        <div class="block-label">06 / PROJECT IMAGE</div>
+        <div class="block-label">06 / PROJECT IMAGES</div>
         <div>
-          <h2>Structural frame development in SolidWorks.</h2>
-          <div class="gallery single">
+          <h2>Structural frame, formed steel sheets, fabrication drawings and jacuzzi details.</h2>
+
+          <div class="gallery pool-gallery">
+
+            <figure class="wide">
+              <div class="media-frame">
+                <img src="images/pool-complete-cad-view-a.png" alt="Complete welded steel swimming pool CAD assembly with formed sheet-metal lining">
+              </div>
+              <figcaption>COMPLETE POOL ASSEMBLY — Full SolidWorks model showing the steel chassis together with the bent sheet-metal shell before fabrication release.</figcaption>
+            </figure>
+
             <figure>
               <div class="media-frame">
-                <img src="images/welded-steel-pool-cad.jpg" alt="SolidWorks model of custom welded steel swimming pool frame">
+                <img src="images/pool-steel-frame-cad.png" alt="Steel structural frame of custom swimming pool">
               </div>
-              <figcaption>STRUCTURAL CAD — Steel-frame assembly developed from engineering layouts before sheet-metal cladding, fabrication and installation.</figcaption>
+              <figcaption>STEEL CHASSIS — Structural frame model developed from the supplied engineering layout before adding the pool shell.</figcaption>
             </figure>
+
+            <figure>
+              <div class="media-frame">
+                <img src="images/pool-complete-cad-view-b.png" alt="Alternative view of complete steel pool with sheet-metal panels">
+              </div>
+              <figcaption>SHEET-METAL INTEGRATION — Formed wall, floor and stair panels assembled digitally to verify interfaces before production.</figcaption>
+            </figure>
+
+            <figure>
+              <div class="media-frame">
+                <img src="images/pool-sheetmetal-drain-detail.png" alt="Detail view of sheet-metal pool floor with drain components">
+              </div>
+              <figcaption>DETAIL COORDINATION — Local sheet geometry around drainage and floor features, checked in the full assembly before manufacturing.</figcaption>
+            </figure>
+
+            <figure>
+              <div class="media-frame">
+                <img src="images/pool-complete-underside.png" alt="Underside view of pool structure and supporting steel frame">
+              </div>
+              <figcaption>UNDERSIDE STRUCTURE — Frame, supports and sheet-metal interfaces reviewed together to verify access, clearances and load-support geometry.</figcaption>
+            </figure>
+
+            <figure class="wide">
+              <div class="media-frame">
+                <img src="images/pool-sheet-identification-drawing.png" alt="Fabrication drawing with individually identified pool sheet-metal parts">
+              </div>
+              <figcaption>PART IDENTIFICATION DRAWING — Individual sheet components were assigned unique IDs so the same code could be marked during laser cutting and followed through bending and on-site installation.</figcaption>
+            </figure>
+
+            <figure>
+              <div class="media-frame">
+                <img src="images/jacuzzi-structure-cad.png" alt="Structural frame of square jacuzzi">
+              </div>
+              <figcaption>JACUZZI STRUCTURE — Compact square jacuzzi chassis designed using the same fabrication-oriented structural detailing approach.</figcaption>
+            </figure>
+
+            <figure>
+              <div class="media-frame">
+                <img src="images/jacuzzi-tub-cad.png" alt="Square jacuzzi tub with formed sheet-metal interior">
+              </div>
+              <figcaption>JACUZZI TUB — Formed steel-sheet interior including stepped geometry and service penetrations.</figcaption>
+            </figure>
+
+            <figure>
+              <div class="media-frame">
+                <img src="images/jacuzzi-installation-cad-a.png" alt="Jacuzzi assembly coordinated with building structure">
+              </div>
+              <figcaption>BUILDING INTEGRATION — Jacuzzi geometry coordinated with the surrounding construction and supporting members before installation.</figcaption>
+            </figure>
+
+            <figure>
+              <div class="media-frame">
+                <img src="images/jacuzzi-installation-cad-b.png" alt="Underside building coordination view of jacuzzi structure">
+              </div>
+              <figcaption>STRUCTURAL COORDINATION — Underside view used to check how the jacuzzi frame interfaced with the building beams and available installation space.</figcaption>
+            </figure>
+
           </div>
         </div>
       </article>
