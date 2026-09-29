@@ -5,7 +5,7 @@ const point=document.querySelector(".white-plot-point");
 const title=document.querySelector(".drawing-title");
 const svg=document.querySelector(".engine-svg");
 
-const DRAW_MS=32000;
+const DRAW_MS=16000;
 let pathInfo=[], totalWeight=0, startTime=null, completed=false;
 
 function prepare(){
