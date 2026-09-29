@@ -1,0 +1,191 @@
+/* -------------------------------------------------------
+   Projects hero — interactive semi-filled isometric FDM printer
+   Crisp SVG lines, no global blur or 3D CSS transform.
+   ------------------------------------------------------- */
+
+.intro .wrap{
+  position:relative;
+}
+
+.projects-printer{
+  position:absolute;
+  top:-32px;
+  right:0;
+  width:440px;
+  height:315px;
+  z-index:1;
+  pointer-events:auto;
+  user-select:none;
+  -webkit-user-select:none;
+  contain:layout paint;
+}
+
+.projects-printer svg{
+  width:100%;
+  height:100%;
+  display:block;
+  overflow:visible;
+  shape-rendering:geometricPrecision;
+  text-rendering:geometricPrecision;
+}
+
+/* crisp line hierarchy */
+.projects-printer .edge,
+.projects-printer .edge-soft,
+.projects-printer .edge-back,
+.projects-printer .boat-line,
+.projects-printer .active-line{
+  vector-effect:non-scaling-stroke;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.projects-printer .edge{
+  stroke:rgba(245,243,237,.92);
+  stroke-width:1.05;
+}
+
+.projects-printer .edge-soft{
+  stroke:rgba(235,232,224,.46);
+  stroke-width:.78;
+}
+
+.projects-printer .edge-back{
+  stroke:rgba(235,232,224,.22);
+  stroke-width:.72;
+}
+
+.projects-printer .boat-line{
+  stroke:rgba(248,246,240,.95);
+  stroke-width:1.02;
+}
+
+.projects-printer .active-line{
+  stroke:#ff9d00;
+  stroke-width:1.45;
+  filter:drop-shadow(0 0 2px rgba(255,157,0,.52));
+}
+
+/* semi-filled 3D faces */
+.projects-printer .frame-face-dark{
+  fill:#171a1d;
+  stroke:rgba(235,232,224,.38);
+  stroke-width:.8;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .frame-face-mid{
+  fill:#22272b;
+  stroke:rgba(238,235,228,.58);
+  stroke-width:.85;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .frame-face-light{
+  fill:#2c3237;
+  stroke:rgba(242,239,232,.72);
+  stroke-width:.9;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .accent-face{
+  fill:#ff9d00;
+  fill-opacity:.82;
+  stroke:#ffc15c;
+  stroke-width:.8;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .accent-dark{
+  fill:#a65a00;
+  fill-opacity:.72;
+  stroke:#ff9d00;
+  stroke-width:.75;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .teal-face{
+  fill:#223a3d;
+  stroke:#6fb6b1;
+  stroke-width:.8;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .bed-top{
+  fill:#111416;
+  stroke:rgba(244,241,234,.66);
+  stroke-width:.85;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .bed-side{
+  fill:#24292d;
+  stroke:rgba(235,232,224,.45);
+  stroke-width:.78;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .screen-fill{
+  fill:#0c181b;
+  stroke:#6fb6b1;
+  stroke-width:.75;
+  vector-effect:non-scaling-stroke;
+}
+
+.projects-printer .build-glow{
+  fill:rgba(255,157,0,.075);
+  opacity:0;
+  transition:opacity .28s ease;
+}
+
+.projects-printer.is-running .build-glow{
+  opacity:1;
+}
+
+.projects-printer .nozzle-glow{
+  fill:#ff9d00;
+  opacity:.25;
+  transition:opacity .2s ease;
+}
+
+.projects-printer.is-running .nozzle-glow{
+  opacity:.88;
+}
+
+.projects-printer .hover-zone{
+  fill:transparent;
+  cursor:crosshair;
+}
+
+/* preserve the original page layout */
+@media (min-width:1001px){
+  .intro .eyebrow,
+  .intro h1,
+  .intro p{
+    position:relative;
+    z-index:2;
+  }
+
+  .intro p{
+    max-width:690px;
+  }
+}
+
+@media (max-width:1180px) and (min-width:1001px){
+  .projects-printer{
+    width:370px;
+    height:270px;
+    top:-16px;
+  }
+
+  .intro p{
+    max-width:610px;
+  }
+}
+
+@media (max-width:1000px){
+  .projects-printer{
+    display:none;
+  }
+}
