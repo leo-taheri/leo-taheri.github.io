@@ -334,6 +334,89 @@ figcaption{
       letter-spacing:.08em;
     }
 
+
+    /* Project 04 — final media refinement: show complete products, avoid aggressive cropping */
+    .hero-image{
+      width:min(600px,92%)!important;
+      height:500px!important;
+      margin:30px auto 0!important;
+      background:#151615!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+    }
+    .hero-image img{
+      width:100%!important;
+      height:100%!important;
+      object-fit:contain!important;
+      object-position:center!important;
+      background:#151615!important;
+    }
+    .gallery.p4-gallery{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+      gap:22px!important;
+      max-width:920px!important;
+      margin:26px auto 0!important;
+    }
+    .gallery.p4-gallery .media-frame{
+      aspect-ratio:auto!important;
+      min-height:360px!important;
+      max-height:none!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      background:#151615!important;
+      overflow:hidden!important;
+    }
+    .gallery.p4-gallery img{
+      width:100%!important;
+      height:100%!important;
+      max-height:540px!important;
+      object-fit:contain!important;
+      object-position:center!important;
+      border:0!important;
+      background:#151615!important;
+    }
+    .gallery.p4-gallery figure.render-wide{
+      grid-column:1/-1!important;
+    }
+    .gallery.p4-gallery figure.render-wide .media-frame{
+      aspect-ratio:16/10!important;
+      min-height:0!important;
+    }
+    .gallery.p4-gallery figure.cad-portrait .media-frame{
+      aspect-ratio:3/4!important;
+      min-height:0!important;
+    }
+    .gallery.p4-gallery figure.lab-full .media-frame{
+      aspect-ratio:4/3!important;
+      min-height:0!important;
+    }
+    .gallery.p4-gallery figure.lab-full img,
+    .gallery.p4-gallery figure.product-full img{
+      object-fit:contain!important;
+      object-position:center!important;
+    }
+    @media(max-width:760px){
+      .hero-image{
+        width:min(100%,520px)!important;
+        height:420px!important;
+      }
+      .gallery.p4-gallery{
+        grid-template-columns:1fr!important;
+        max-width:560px!important;
+      }
+      .gallery.p4-gallery figure.render-wide{
+        grid-column:auto!important;
+      }
+      .gallery.p4-gallery .media-frame{
+        min-height:0!important;
+      }
+      .gallery.p4-gallery img{
+        max-height:none!important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -482,34 +565,49 @@ figcaption{
               <div class="media-frame">
                 <img src="images/CC-M23_render2.JPG" alt="Concept render of the automated colony imaging station in a laboratory workstation setting">
               </div>
-              <figcaption>CONCEPT RENDER — Product visualization showing the compact colony-imaging station integrated into a laboratory workstation, with a Petri dish positioned in the imaging chamber.</figcaption>
+              <figcaption>CONCEPT RENDER — Product visualization showing the colony-imaging station as a compact benchtop device within a laboratory workstation.</figcaption>
             </figure>
-            <figure>
+
+            <figure class="cad-portrait">
               <div class="media-frame">
-                <img src="images/colony-imager-v1-front.jpg" alt="Early dark colony imaging station prototype">
+                <img src="images/colony-imager-cad-exterior.png" alt="Exterior CAD model of the later green colony imaging station enclosure">
+              </div>
+              <figcaption>ENCLOSURE CAD — Exterior model of the later product version, showing the cylindrical 3D-printed housing and open sample-loading area.</figcaption>
+            </figure>
+
+            <figure class="cad-portrait">
+              <div class="media-frame">
+                <img src="images/colony-imager-cad-internal.png" alt="Transparent CAD view showing internal components of the colony imaging station">
+              </div>
+              <figcaption>INTERNAL PACKAGING — Transparent CAD view showing the compact arrangement of the camera, electronics, structural supports and imaging chamber inside the enclosure.</figcaption>
+            </figure>
+
+            <figure class="product-full">
+              <div class="media-frame">
+                <img src="images/colony-imager-v1-front.jpg" alt="Early dark colony imaging station prototype shown in full">
               </div>
               <figcaption>EARLY PROTOTYPE — Initial enclosure with the illuminated imaging chamber integrated into the lower section.</figcaption>
             </figure>
 
-            <figure>
+            <figure class="product-full">
               <div class="media-frame">
                 <img src="images/colony-imager-v1-sample.jpg" alt="Petri dish in the controlled imaging zone">
               </div>
               <figcaption>IMAGING ZONE — Petri dish positioned inside the controlled illumination area during image capture.</figcaption>
             </figure>
 
-            <figure>
+            <figure class="lab-full">
               <div class="media-frame">
-                <img src="images/colony-imager-lab.jpg" alt="Later colony imaging station in laboratory use">
+                <img src="images/colony-imager-lab.jpg" alt="Later colony imaging station shown in full during laboratory use">
               </div>
-              <figcaption>LAB DEPLOYMENT — Later green-and-white version operating as a compact benchtop imaging system.</figcaption>
+              <figcaption>LAB DEPLOYMENT — Later green-and-white version shown in its real laboratory context, with the full device kept visible rather than tightly cropped.</figcaption>
             </figure>
 
-            <figure>
+            <figure class="product-full">
               <div class="media-frame">
-                <img src="images/colony-imager-v1-rear.jpg" alt="Top and rear view showing ventilation">
+                <img src="images/colony-imager-v1-rear.jpg" alt="Rear and upper view of the colony imaging station showing ventilation">
               </div>
-              <figcaption>COOLING &amp; ENCLOSURE — Exterior view showing the compact housing and integrated camera ventilation.</figcaption>
+              <figcaption>COOLING &amp; ENCLOSURE — Rear and upper view showing the housing, camera ventilation and compact packaging around the imaging system.</figcaption>
             </figure>
           </div>
 
