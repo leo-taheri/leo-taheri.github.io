@@ -417,6 +417,104 @@ figcaption{
       }
     }
 
+
+    /* Project 04 — final image cleanup */
+    .hero-image{
+      width:min(620px,92%)!important;
+      height:auto!important;
+      min-height:0!important;
+      margin:30px auto 0!important;
+      border:0!important;
+      background:transparent!important;
+      overflow:visible!important;
+    }
+
+    .hero-image img{
+      width:100%!important;
+      height:auto!important;
+      max-height:540px!important;
+      object-fit:contain!important;
+      object-position:center!important;
+      display:block!important;
+      background:transparent!important;
+      border:0!important;
+    }
+
+    .gallery.p4-gallery{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+      gap:26px 22px!important;
+      max-width:920px!important;
+      margin:28px auto 0!important;
+      align-items:start!important;
+    }
+
+    .gallery.p4-gallery .media-frame,
+    .gallery.p4-gallery figure.render-wide .media-frame,
+    .gallery.p4-gallery figure.cad-portrait .media-frame,
+    .gallery.p4-gallery figure.lab-full .media-frame{
+      width:100%!important;
+      height:auto!important;
+      min-height:0!important;
+      max-height:none!important;
+      aspect-ratio:auto!important;
+      display:block!important;
+      border:0!important;
+      background:transparent!important;
+      overflow:visible!important;
+    }
+
+    .gallery.p4-gallery img,
+    .gallery.p4-gallery figure.render-wide img,
+    .gallery.p4-gallery figure.lab-full img,
+    .gallery.p4-gallery figure.product-full img{
+      width:auto!important;
+      max-width:100%!important;
+      height:auto!important;
+      max-height:540px!important;
+      margin:0 auto!important;
+      object-fit:contain!important;
+      object-position:center!important;
+      display:block!important;
+      border:0!important;
+      background:transparent!important;
+    }
+
+    .gallery.p4-gallery figure.render-wide{
+      grid-column:1/-1!important;
+    }
+
+    .gallery.p4-gallery figure.render-wide img{
+      width:100%!important;
+      max-height:620px!important;
+    }
+
+    .gallery.p4-gallery figure.cad-portrait img{
+      max-height:520px!important;
+    }
+
+    .gallery.p4-gallery figure.lab-full img{
+      max-height:520px!important;
+    }
+
+    @media(max-width:760px){
+      .hero-image{
+        width:min(100%,560px)!important;
+      }
+
+      .gallery.p4-gallery{
+        grid-template-columns:1fr!important;
+        max-width:560px!important;
+      }
+
+      .gallery.p4-gallery figure.render-wide{
+        grid-column:auto!important;
+      }
+
+      .gallery.p4-gallery img{
+        max-height:none!important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -570,14 +668,14 @@ figcaption{
 
             <figure class="cad-portrait">
               <div class="media-frame">
-                <img src="images/colony-imager-cad-exterior.png" alt="Exterior CAD model of the later green colony imaging station enclosure">
+                <img src="Images/colony-imager-cad-exterior.png" alt="Exterior CAD model of the later green colony imaging station enclosure">
               </div>
               <figcaption>ENCLOSURE CAD — Exterior model of the later product version, showing the cylindrical 3D-printed housing and open sample-loading area.</figcaption>
             </figure>
 
             <figure class="cad-portrait">
               <div class="media-frame">
-                <img src="images/colony-imager-cad-internal.png" alt="Transparent CAD view showing internal components of the colony imaging station">
+                <img src="Images/colony-imager-cad-internal.png" alt="Transparent CAD view showing internal components of the colony imaging station">
               </div>
               <figcaption>INTERNAL PACKAGING — Transparent CAD view showing the compact arrangement of the camera, electronics, structural supports and imaging chamber inside the enclosure.</figcaption>
             </figure>
